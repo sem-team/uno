@@ -1,6 +1,6 @@
 package ru.kpfu.itis.sem_team.listeners;
 
-import ru.kpfu.itis.sem_team.message.Message;
+import ru.kpfu.itis.sem_team.message.IMessage;
 import ru.kpfu.itis.sem_team.server.IServer;
 
 public interface IServerEventListener {
@@ -9,5 +9,5 @@ public interface IServerEventListener {
      * as listener should be initialized when added to server.
      */
     void init(IServer server);
-    void handle(int connectionId, Message message);
+    void handle(int connectionId, IMessage message);
 }

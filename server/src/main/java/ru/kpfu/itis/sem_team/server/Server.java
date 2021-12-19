@@ -2,7 +2,7 @@ package ru.kpfu.itis.sem_team.server;
 
 import ru.kpfu.itis.sem_team.exceptions.ServerException;
 import ru.kpfu.itis.sem_team.listeners.IServerEventListener;
-import ru.kpfu.itis.sem_team.message.Message;
+import ru.kpfu.itis.sem_team.message.IMessage;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -60,7 +60,7 @@ public class Server implements IServer, Closeable {
             sockets.add(socket);
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 
-            Message message = (Message) ois.readObject();
+            IMessage message = (IMessage) ois.readObject();
 
             int socketId = sockets.lastIndexOf(socket);
 
@@ -82,7 +82,7 @@ public class Server implements IServer, Closeable {
     }
 
     @Override
-    public void sendMessage(int connectionId, Message message) {
+    public void sendMessage(int connectionId, IMessage message) {
         try {
             Socket socket = sockets.get(connectionId);
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());

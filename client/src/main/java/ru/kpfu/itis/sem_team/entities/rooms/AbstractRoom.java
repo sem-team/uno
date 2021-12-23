@@ -4,4 +4,12 @@ import main.java.ru.kpfu.itis.sem_team.entities.games.AbstractGame;
 
 public abstract class AbstractRoom {
     protected AbstractGame game;
+
+    public AbstractGame getGame() {
+        return game;
+    }
+
+    public void setGame(AbstractGame game) {
+        this.game = game;
+    }
 }

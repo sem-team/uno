@@ -3,6 +3,11 @@ package main.java.ru.kpfu.itis.sem_team.entities.players;
 import main.java.ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 
 public class UnoPlayer extends AbstractPlayer {
+
+    public UnoPlayer(String name) {
+        super(name);
+    }
+
     @Override
     public void joinRoom(AbstractRoom room) {
 

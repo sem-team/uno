@@ -10,7 +10,7 @@ public abstract class AbstractRoom {
     protected List<AbstractPlayer> participants;
     protected AbstractPlayer admin;
 
-    //TODO: Methods to interact with Player: addPlayer, removePlayer, etc
+    //TODO: Get rid of unnecessary getters & setters
 
     public AbstractGame getGame() {
         return game;
@@ -34,5 +34,13 @@ public abstract class AbstractRoom {
 
     public void setAdmin(AbstractPlayer admin) {
         this.admin = admin;
+    }
+
+    public void addPlayer(AbstractPlayer player) {
+        participants.add(player);
+    }
+
+    public void removePlayer(AbstractPlayer player) {
+        participants.remove(player);
     }
 }

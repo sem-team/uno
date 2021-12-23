@@ -7,6 +7,6 @@ public class UnoRoom extends AbstractRoom {
     public UnoRoom(UnoPlayer admin) {
         this.game = new UnoGame(this);
         this.admin = admin;
-        //TODO: future addPlayer() reference from AbstractRoom
+        this.addPlayer(admin);
     }
 }

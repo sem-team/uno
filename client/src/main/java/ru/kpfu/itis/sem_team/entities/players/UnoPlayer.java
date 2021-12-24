@@ -8,23 +8,28 @@ public class UnoPlayer extends AbstractPlayer {
         super(name);
     }
 
+    //TODO: useCard
+    //TODO: askCard
+    //TODO: sayUno
+    //TODO: sayNotUno
+
     @Override
     public void joinRoom(AbstractRoom room) {
-
+        //TODO: use room's corresponding method
     }
 
     @Override
     public void leaveRoom(AbstractRoom room) {
-
+        //TODO: use room's corresponding method
     }
 
     @Override
     public void createRoom() {
-
+        //TODO: use room's corresponding method
     }
 
     @Override
     public void deleteRoom(AbstractRoom room) {
-
+        //TODO: use room's corresponding method
     }
 }

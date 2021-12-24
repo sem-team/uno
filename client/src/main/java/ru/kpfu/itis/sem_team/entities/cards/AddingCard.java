@@ -13,7 +13,8 @@ public class AddingCard extends AbstractCard implements Adding {
 
     @Override
     public void addCards(AbstractPlayer player, int number) {
-
+        //TODO: Get cards from board's stack, get player's stack and add cards
+        //FIXME: Change signature: add AbstractBoard
     }
 
     public int getAddsCards() {

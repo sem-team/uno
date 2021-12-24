@@ -8,4 +8,8 @@ public class UnoGame extends AbstractGame {
         this.room = room;
         this.board = new UnoBoard(this);
     }
+
+    //TODO: giveCard
+    //TODO: giveCards - private
+    //TODO: resetUsersState - in order to start a game from the beginning  - private
 }

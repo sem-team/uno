@@ -11,10 +11,12 @@ public class UnoBoard extends AbstractBoard {
 
     private Color color;
     private boolean clockwise;
-    private UnoCard primaryCard;
+    private UnoCard primaryCard; //FIXME: Delete this cause I use it only for a color
     //TODO: Maybe I can find another collection?
     private List<AbstractCard> stackOfCard;
     private AbstractCard lastUsedCard;
+
+    //TODO: Generate stack method
 
     public UnoBoard(AbstractGame game) {
         this.game = game;

@@ -9,6 +9,6 @@ public class Wildcard extends AbstractCard implements ResettingColor {
 
     @Override
     public void resetColor(Color color, AbstractBoard board) {
-
+        //TODO: sets board's color
     }
 }

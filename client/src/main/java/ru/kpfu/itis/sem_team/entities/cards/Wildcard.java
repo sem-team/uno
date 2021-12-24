@@ -1,14 +1,14 @@
 package main.java.ru.kpfu.itis.sem_team.entities.cards;
 
-import main.java.ru.kpfu.itis.sem_team.entities.boards.AbstractBoard;
+import main.java.ru.kpfu.itis.sem_team.entities.boards.UnoBoard;
 
-public class Wildcard extends AbstractCard implements ResettingColor {
+public class Wildcard extends UnoCard implements ResettingColor {
     public Wildcard() {
         super(Color.COLORLESS, 0);
     }
 
     @Override
-    public void resetColor(Color color, AbstractBoard board) {
-        //TODO: sets board's color
+    public void resetColor(Color color, UnoBoard board) {
+        board.setColor(color);
     }
 }

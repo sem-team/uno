@@ -1,8 +1,12 @@
 package main.java.ru.kpfu.itis.sem_team.entities.cards;
 
-import main.java.ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
+import main.java.ru.kpfu.itis.sem_team.entities.boards.UnoBoard;
+import main.java.ru.kpfu.itis.sem_team.entities.games.UnoGame;
+import main.java.ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 
-public class AddingCard extends AbstractCard implements Adding {
+import java.util.Deque;
+
+public class AddingCard extends UnoCard implements Adding {
 
     private int addsCards;
 
@@ -12,9 +16,13 @@ public class AddingCard extends AbstractCard implements Adding {
     }
 
     @Override
-    public void addCards(AbstractPlayer player, int number) {
-        //TODO: Get cards from board's stack, get player's stack and add cards
-        //FIXME: Change signature: add AbstractBoard
+    public void addCards(UnoPlayer player, int number, UnoBoard board) {
+        Deque<UnoCard> cards = board.getStackOfCard();
+        UnoGame game = (UnoGame) board.getGame();
+        for (int i = 0; i < number; i++) {
+            UnoCard card = cards.pop();
+            game.giveCard(card, player);
+        }
     }
 
     public int getAddsCards() {

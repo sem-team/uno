@@ -14,6 +14,7 @@ public class UnoBoard extends AbstractBoard {
     private UnoCard lastUsedCard;
 
     //TODO: Generate stack method
+    //TODO: Change stackOfCard to just-in-time generation
 
     public UnoBoard(AbstractGame game) {
         this.game = game;

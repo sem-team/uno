@@ -2,7 +2,7 @@ package main.java.ru.kpfu.itis.sem_team.entities.cards;
 
 import main.java.ru.kpfu.itis.sem_team.entities.boards.UnoBoard;
 
-public class Wildcard extends UnoCard implements ResettingColor {
+public class Wildcard extends UnoCard implements IResettingColor {
     public Wildcard() {
         super(Color.COLORLESS, 0);
     }

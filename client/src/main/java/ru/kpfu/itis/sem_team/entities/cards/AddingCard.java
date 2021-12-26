@@ -6,7 +6,7 @@ import main.java.ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 
 import java.util.Deque;
 
-public class AddingCard extends UnoCard implements Adding {
+public class AddingCard extends UnoCard implements IAdding {
 
     private int addsCards;
 

@@ -1,6 +1,6 @@
 package ru.kpfu.itis.sem_team.server;
 
-import ru.kpfu.itis.sem_team.event_manager.IServerMessageManager;
+import ru.kpfu.itis.sem_team.message_managers.IServerMessageManager;
 import ru.kpfu.itis.sem_team.message.IMessage;
 
 public interface IServer {

@@ -1,7 +1,7 @@
 package ru.kpfu.itis.sem_team.app;
 
-import ru.kpfu.itis.sem_team.event_manager.IServerMessageManager;
-import ru.kpfu.itis.sem_team.event_manager.ServerMessageManager;
+import ru.kpfu.itis.sem_team.message_managers.IServerMessageManager;
+import ru.kpfu.itis.sem_team.message_managers.ServerMessageManager;
 import ru.kpfu.itis.sem_team.listeners.ConsolePingServerMessageListener;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.server.IServer;

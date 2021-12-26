@@ -1,7 +1,9 @@
 package main.java.ru.kpfu.itis.sem_team.entities.players;
 
 import main.java.ru.kpfu.itis.sem_team.entities.cards.UnoCard;
+import main.java.ru.kpfu.itis.sem_team.entities.menus.AbstractMenu;
 import main.java.ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
+import main.java.ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 
 import java.util.List;
 
@@ -26,21 +28,23 @@ public class UnoPlayer extends AbstractPlayer {
 
     @Override
     public void joinRoom(AbstractRoom room) {
-        //TODO: use room's corresponding method
+        room.addPlayer(this);
     }
 
     @Override
     public void leaveRoom(AbstractRoom room) {
-        //TODO: use room's corresponding method
+        room.removePlayer(this);
     }
 
     @Override
-    public void createRoom() {
-        //TODO: use room's corresponding method
+    public void createRoom(AbstractMenu menu) {
+        UnoRoom room = new UnoRoom(this);
+        menu.addRoom(room);
+        room.addPlayer(this);
     }
 
     @Override
     public void deleteRoom(AbstractRoom room) {
-        //TODO: use room's corresponding method
+        room.delete();
     }
 }

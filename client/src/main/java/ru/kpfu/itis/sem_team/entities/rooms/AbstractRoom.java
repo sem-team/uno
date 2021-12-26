@@ -16,6 +16,12 @@ public abstract class AbstractRoom {
         return game;
     }
 
+    public void delete() {
+        game = null;
+        participants.clear();
+        admin = null;
+    }
+
     public void setGame(AbstractGame game) {
         this.game = game;
     }

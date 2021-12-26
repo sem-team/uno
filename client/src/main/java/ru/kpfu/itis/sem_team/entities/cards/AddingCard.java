@@ -17,11 +17,9 @@ public class AddingCard extends UnoCard implements IAdding {
 
     @Override
     public void addCards(UnoPlayer player, int number, UnoBoard board) {
-        Deque<UnoCard> cards = board.getStackOfCard();
         UnoGame game = (UnoGame) board.getGame();
         for (int i = 0; i < number; i++) {
-            UnoCard card = cards.pop();
-            game.giveCard(card, player);
+            game.giveCard(player);
         }
     }
 

@@ -14,6 +14,7 @@ public class UnoGame extends AbstractGame {
     public void giveCard(UnoCard card, UnoPlayer player) {
         player.addCard(card);
     }
+    //TODO: call getCard() from Board and use it here 
     //TODO: giveCards - private
     //TODO: resetUsersState - in order to start a game from the beginning  - private
 }

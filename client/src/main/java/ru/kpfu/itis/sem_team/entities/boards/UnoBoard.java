@@ -10,14 +10,15 @@ public class UnoBoard extends AbstractBoard {
 
     private Color color;
     private boolean clockwise;
-    private Deque<UnoCard> stackOfCard;
+//    private Deque<UnoCard> stackOfCard;
     private UnoCard lastUsedCard;
-
-    //TODO: Generate stack method
-    //TODO: Change stackOfCard to just-in-time generation
 
     public UnoBoard(AbstractGame game) {
         this.game = game;
+    }
+
+    public UnoCard getCard() {
+
     }
 
     public Color getColor() {
@@ -36,13 +37,13 @@ public class UnoBoard extends AbstractBoard {
         this.clockwise = clockwise;
     }
 
-    public Deque<UnoCard> getStackOfCard() {
-        return stackOfCard;
-    }
-
-    public void setStackOfCard(Deque<UnoCard> stackOfCard) {
-        this.stackOfCard = stackOfCard;
-    }
+//    public Deque<UnoCard> getStackOfCard() {
+//        return stackOfCard;
+//    }
+//
+//    public void setStackOfCard(Deque<UnoCard> stackOfCard) {
+//        this.stackOfCard = stackOfCard;
+//    }
 
     public UnoCard getLastUsedCard() {
         return lastUsedCard;

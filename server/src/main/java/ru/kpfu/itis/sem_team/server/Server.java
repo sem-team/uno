@@ -1,7 +1,7 @@
 package ru.kpfu.itis.sem_team.server;
 
+import ru.kpfu.itis.sem_team.event_manager.IServerMessageManager;
 import ru.kpfu.itis.sem_team.exceptions.ServerException;
-import ru.kpfu.itis.sem_team.listeners.IServerEventListener;
 import ru.kpfu.itis.sem_team.message.IMessage;
 
 import java.io.ByteArrayInputStream;
@@ -20,12 +20,11 @@ import java.util.List;
 public class Server implements IServer {
     private ServerSocketChannel server;
     private Selector selector;
-    private final List<IServerEventListener> listeners;
+    private IServerMessageManager manager;
     private final int port;
     private final List<SocketChannel> channels;
 
     public Server(int port) {
-        this.listeners = new ArrayList<>();
         this.channels = new ArrayList<>();
         this.port = port;
     }
@@ -34,9 +33,9 @@ public class Server implements IServer {
     public void init() {
         try {
             server = ServerSocketChannel.open();
-            InetSocketAddress addr = new InetSocketAddress(this.port);
+            InetSocketAddress address = new InetSocketAddress(this.port);
 
-            server.bind(addr);
+            server.bind(address);
             server.configureBlocking(false);
 
             selector = Selector.open();
@@ -64,6 +63,16 @@ public class Server implements IServer {
                 throw new ServerException("Something happened while listening for new messages", e);
             }
         }
+    }
+
+    @Override
+    public IServerMessageManager getMessageManager() {
+        return null;
+    }
+
+    @Override
+    public void setMessageManager(IServerMessageManager manager) {
+        this.manager = manager;
     }
 
     private void processKey(SelectionKey key) {
@@ -97,6 +106,7 @@ public class Server implements IServer {
             messageSizeBuffer.rewind();
             int messageSize = messageSizeBuffer.getInt();
 
+            //close connection if message size is 0
             if (messageSize == 0) {
                 closeConnection(connectionId);
                 return;
@@ -110,7 +120,7 @@ public class Server implements IServer {
             IMessage message = (IMessage) ois.readObject();
 
             //pass message to listeners
-            listeners.forEach(listener -> listener.handle(connectionId, message));
+            manager.handle(connectionId, message);
 
         } catch (ClassNotFoundException | IOException e) {
             throw new ServerException("Unable to read message", e);
@@ -128,12 +138,6 @@ public class Server implements IServer {
     }
 
     @Override
-    public void addEventListener(IServerEventListener eventListener) {
-        eventListener.init(this);
-        listeners.add(eventListener);
-    }
-
-    @Override
     public void sendMessage(int connectionId, IMessage message) {
         try {
             SocketChannel channel = channels.get(connectionId);
@@ -142,5 +146,17 @@ public class Server implements IServer {
         } catch (IOException e) {
             throw new ServerException("Unable to send message", e);
         }
+    }
+
+    @Override
+    public void sendMessageBroadcast(IMessage message) {
+        ByteBuffer messageBuffer = ByteBuffer.wrap(message.formMessage());
+        channels.forEach(channel -> {
+            try {
+                channel.write(messageBuffer);
+            } catch (IOException e) {
+                throw new ServerException("Unable to send message", e);
+            }
+        });
     }
 }

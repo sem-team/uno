@@ -4,10 +4,10 @@ import ru.kpfu.itis.sem_team.message.IMessage;
 import ru.kpfu.itis.sem_team.message.Message;
 import ru.kpfu.itis.sem_team.server.IServer;
 
-public class ConsolePingServerEventListener implements IServerEventListener {
+public class ConsolePingServerMessageListener implements IServerMessageListener {
     private IServer server;
 
-    public ConsolePingServerEventListener() {
+    public ConsolePingServerMessageListener() {
     }
 
     @Override

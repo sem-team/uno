@@ -3,11 +3,11 @@ package ru.kpfu.itis.sem_team.listeners;
 import ru.kpfu.itis.sem_team.client.IClient;
 import ru.kpfu.itis.sem_team.message.IMessage;
 
-public class ConsolePingClientEventListener implements IClientEventListener {
+public class ConsolePingClientMessageListener implements IClientMessageListener {
     private IClient client;
     private int number = 0;
 
-    public ConsolePingClientEventListener() {
+    public ConsolePingClientMessageListener() {
     }
 
     @Override

@@ -1,8 +1,8 @@
 package ru.kpfu.itis.sem_team.client;
 
 import ru.kpfu.itis.sem_team.exceptions.ClientException;
-import ru.kpfu.itis.sem_team.listeners.IClientEventListener;
 import ru.kpfu.itis.sem_team.message.IMessage;
+import ru.kpfu.itis.sem_team.message_manager.IClientMessageManager;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -11,12 +11,10 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class Client implements IClient{
-    private final List<IClientEventListener> eventListeners;
+    private IClientMessageManager manager;
     private Thread listenThread;
     private SocketChannel channel;
     private Selector selector;
@@ -26,7 +24,6 @@ public class Client implements IClient{
     public Client(String host, int port) {
         this.host = host;
         this.port = port;
-        eventListeners = new ArrayList<>();
     }
 
 
@@ -80,6 +77,16 @@ public class Client implements IClient{
         listenThread.start();
     }
 
+    @Override
+    public IClientMessageManager getMessageManager() {
+        return manager;
+    }
+
+    @Override
+    public void setMessageManager(IClientMessageManager manager) {
+        this.manager = manager;
+    }
+
     private void processKey(SelectionKey key) {
         if (!key.isValid()) {
             return;
@@ -107,16 +114,10 @@ public class Client implements IClient{
             IMessage message = (IMessage) ois.readObject();
 
             //pass message to listeners
-            eventListeners.forEach(eventListener -> eventListener.handle(message));
+            manager.handle(message);
         } catch (IOException | ClassNotFoundException e) {
             throw new ClientException("Unable to get message", e);
         }
-    }
-
-    @Override
-    public void addListener(IClientEventListener eventListener) {
-        eventListener.init(this);
-        eventListeners.add(eventListener);
     }
 
     @Override

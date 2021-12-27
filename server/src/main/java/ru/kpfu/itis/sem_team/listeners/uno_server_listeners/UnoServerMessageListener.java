@@ -7,6 +7,8 @@ import ru.kpfu.itis.sem_team.server.UnoServer;
 
 public abstract class UnoServerMessageListener implements IServerMessageListener {
     protected UnoServer server;
+    protected final Integer TYPE = 0;
+    protected final String ACTION = "none";
 
     @Override
     public void init(IServer server) {
@@ -18,5 +20,15 @@ public abstract class UnoServerMessageListener implements IServerMessageListener
 
     public boolean isMessageTypeAcceptable(Integer providedType, Integer intendedType) {
         return providedType != null && providedType.equals(intendedType);
+    }
+
+    @Override
+    public int getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
     }
 }

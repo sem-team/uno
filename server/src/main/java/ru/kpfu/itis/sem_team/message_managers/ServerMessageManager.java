@@ -23,7 +23,13 @@ public class ServerMessageManager implements IServerMessageManager {
 
     @Override
     public void handle(int connectionId, IMessage message) {
-        listeners.forEach(listener -> listener.handle(connectionId, message));
+        Integer type = (Integer) message.getParameter("type");
+        String action = (String) message.getParameter("action");
+
+        listeners.forEach(listener -> {
+                if (listener.getType() == type && listener.getAction().equals(action))
+                    listener.handle(connectionId, message);
+        });
     }
 
     @Override

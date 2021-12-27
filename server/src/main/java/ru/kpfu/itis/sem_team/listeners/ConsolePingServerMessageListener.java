@@ -6,6 +6,8 @@ import ru.kpfu.itis.sem_team.server.IServer;
 
 public class ConsolePingServerMessageListener implements IServerMessageListener {
     private IServer server;
+    public final Integer TYPE = 0;
+    public final String ACTION = "ping";
 
     public ConsolePingServerMessageListener() {
     }
@@ -25,5 +27,15 @@ public class ConsolePingServerMessageListener implements IServerMessageListener 
         IMessage responseMessage = new Message();
         responseMessage.addParameter("type", "pong");
         server.sendMessage(connectionId, responseMessage);
+    }
+
+    @Override
+    public int getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
     }
 }

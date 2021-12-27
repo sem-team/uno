@@ -10,6 +10,6 @@ public interface IServerMessageListener {
      */
     void init(IServer server);
     void handle(int connectionId, IMessage message);
-    int getType();
+    Integer getType();
     String getAction();
 }

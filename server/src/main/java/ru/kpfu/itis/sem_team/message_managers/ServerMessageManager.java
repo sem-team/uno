@@ -27,7 +27,7 @@ public class ServerMessageManager implements IServerMessageManager {
         String action = (String) message.getParameter("action");
 
         listeners.forEach(listener -> {
-                if (listener.getType() == type && listener.getAction().equals(action))
+                if (listener.getType().equals(type) && listener.getAction().equals(action))
                     listener.handle(connectionId, message);
         });
     }

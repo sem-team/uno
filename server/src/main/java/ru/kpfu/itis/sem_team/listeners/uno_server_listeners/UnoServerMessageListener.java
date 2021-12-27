@@ -7,13 +7,13 @@ import ru.kpfu.itis.sem_team.server.UnoServer;
 
 public abstract class UnoServerMessageListener implements IServerMessageListener {
     protected UnoServer server;
-    protected final Integer TYPE = 0;
-    protected final String ACTION = "none";
+    public final static Integer TYPE = 0;
+    public final static String ACTION = "none";
 
     @Override
     public void init(IServer server) {
         if (!server.getClass().equals(UnoServer.class)) {
-            throw new MessageManagerException("Unable to register app: incorrect class");
+            throw new MessageManagerException("Unable to register server: incorrect class");
         }
         this.server = (UnoServer) server;
     }
@@ -23,7 +23,7 @@ public abstract class UnoServerMessageListener implements IServerMessageListener
     }
 
     @Override
-    public int getType() {
+    public Integer getType() {
         return TYPE;
     }
 

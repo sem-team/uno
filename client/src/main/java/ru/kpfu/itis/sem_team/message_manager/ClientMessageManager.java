@@ -6,6 +6,7 @@ import ru.kpfu.itis.sem_team.message.IMessage;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class ClientMessageManager implements IClientMessageManager {
     private final List<IClientMessageListener> listeners;
@@ -28,6 +29,11 @@ public class ClientMessageManager implements IClientMessageManager {
 
     @Override
     public void handle(IMessage message) {
-        listeners.forEach(listener -> listener.handle(message));
+        Integer type = (Integer) message.getParameter("type");
+        String action = (String) message.getParameter("action");
+        listeners.forEach(listener -> {
+            if (Objects.equals(listener.getType(), type) && listener.getAction().equals(action))
+                listener.handle(message);
+        });
     }
 }

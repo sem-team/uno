@@ -6,6 +6,9 @@ import ru.kpfu.itis.sem_team.message.IMessage;
 public class ConsolePingClientMessageListener implements IClientMessageListener {
     private IClient client;
     private int number = 0;
+    public static final Integer TYPE = 0;
+    public static final String ACTION = "ping";
+
 
     public ConsolePingClientMessageListener() {
     }
@@ -21,5 +24,15 @@ public class ConsolePingClientMessageListener implements IClientMessageListener 
         if (type.equals("pong")) {
             System.out.println("Received pong from server");
         }
+    }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
     }
 }

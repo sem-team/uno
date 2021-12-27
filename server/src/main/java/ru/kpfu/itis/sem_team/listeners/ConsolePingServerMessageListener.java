@@ -30,7 +30,7 @@ public class ConsolePingServerMessageListener implements IServerMessageListener 
     }
 
     @Override
-    public int getType() {
+    public Integer getType() {
         return TYPE;
     }
 

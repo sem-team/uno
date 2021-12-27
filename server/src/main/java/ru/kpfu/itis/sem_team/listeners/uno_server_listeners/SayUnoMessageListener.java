@@ -5,6 +5,10 @@ import ru.kpfu.itis.sem_team.message.IMessage;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class SayUnoMessageListener extends UnoServerMessageListener {
+
+    public static final int TYPE = 1;
+    public static final String ACTION = "uno";
+
     @Override
     public void handle(int connectionId, IMessage message) {
         Integer type = (Integer) message.getParameter("type");

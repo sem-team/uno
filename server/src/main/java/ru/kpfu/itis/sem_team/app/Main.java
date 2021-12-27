@@ -16,7 +16,6 @@ public class Main {
         manager.addMessageListener(new ConsolePingServerMessageListener());
         manager.register(server);
 
-        server.init();
         server.listen();
     }
 }

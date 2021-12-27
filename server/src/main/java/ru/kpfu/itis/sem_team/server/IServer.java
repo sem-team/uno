@@ -4,7 +4,6 @@ import ru.kpfu.itis.sem_team.message_managers.IServerMessageManager;
 import ru.kpfu.itis.sem_team.message.IMessage;
 
 public interface IServer {
-    void init();
     void listen();
     IServerMessageManager getMessageManager();
     void setMessageManager(IServerMessageManager manager);

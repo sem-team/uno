@@ -27,10 +27,10 @@ public class Server implements IServer {
     public Server(int port) {
         this.channels = new ArrayList<>();
         this.port = port;
+        init();
     }
 
-    @Override
-    public void init() {
+    private void init() {
         try {
             server = ServerSocketChannel.open();
             InetSocketAddress address = new InetSocketAddress(this.port);

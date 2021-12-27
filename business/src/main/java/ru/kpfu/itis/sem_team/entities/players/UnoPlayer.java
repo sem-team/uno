@@ -142,6 +142,10 @@ public class UnoPlayer extends AbstractPlayer {
         cards.add(card);
     }
 
+    public void addCards(List<UnoCard> cards) {
+        this.cards.addAll(cards);
+    }
+
     @Override
     public void joinRoom(AbstractRoom room) {
         room.addPlayer(this);

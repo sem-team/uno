@@ -1,6 +1,10 @@
 package ru.kpfu.itis.sem_team.entities.players;
 
-public abstract class AbstractPlayer implements IPlayer {
+import ru.kpfu.itis.sem_team.event.IEvent;
+import ru.kpfu.itis.sem_team.util.Observable;
+import ru.kpfu.itis.sem_team.util.Observer;
+
+public abstract class AbstractPlayer extends Observable implements IPlayer, Observer  {
     protected String name;
 
     public AbstractPlayer(String name) {
@@ -13,5 +17,10 @@ public abstract class AbstractPlayer implements IPlayer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public void update(Observable o, IEvent event) {
+
     }
 }

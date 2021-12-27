@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.kpfu.itis.sem-team</groupId>
-    <artifactId>business</artifactId>
+    <artifactId>gui</artifactId>
     <version>0.1</version>
 
     <properties>
@@ -15,13 +15,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>ru.kpfu.itis.sem_team</groupId>
-            <artifactId>protocol</artifactId>
-            <version>0.1</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx</artifactId>
+            <version>11.0.1</version>
         </dependency>
         <dependency>
             <groupId>ru.kpfu.itis.sem-team</groupId>
-            <artifactId>gui</artifactId>
+            <artifactId>business</artifactId>
             <version>0.1</version>
         </dependency>
     </dependencies>

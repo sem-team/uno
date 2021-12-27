@@ -3,8 +3,11 @@ package ru.kpfu.itis.sem_team.entities.games;
 import ru.kpfu.itis.sem_team.entities.boards.AbstractBoard;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
+import ru.kpfu.itis.sem_team.event.IEvent;
+import ru.kpfu.itis.sem_team.util.Observable;
+import ru.kpfu.itis.sem_team.util.Observer;
 
-public abstract class AbstractGame {
+public abstract class AbstractGame extends Observable implements Observer {
     protected boolean hasStarted;
     protected boolean hasEnded;
     protected AbstractBoard board;
@@ -32,5 +35,10 @@ public abstract class AbstractGame {
 
     public AbstractRoom getRoom() {
         return room;
+    }
+
+    @Override
+    public void update(Observable o, IEvent event) {
+
     }
 }

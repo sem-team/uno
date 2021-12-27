@@ -2,11 +2,14 @@ package ru.kpfu.itis.sem_team.entities.menus;
 
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
+import ru.kpfu.itis.sem_team.event.IEvent;
+import ru.kpfu.itis.sem_team.util.Observable;
+import ru.kpfu.itis.sem_team.util.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractMenu {
+public abstract class AbstractMenu extends Observable implements Observer {
     protected List<AbstractRoom> rooms;
     protected List<AbstractPlayer> players;
 
@@ -52,5 +55,10 @@ public abstract class AbstractMenu {
     public boolean isPlayerValid(AbstractPlayer newPlayer) {
         return players.stream()
                 .anyMatch(player -> player.getName().equals(newPlayer.getName()));
+    }
+
+    @Override
+    public void update(Observable o, IEvent event) {
+
     }
 }

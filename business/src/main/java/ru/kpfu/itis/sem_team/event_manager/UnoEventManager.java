@@ -1,7 +1,7 @@
 package ru.kpfu.itis.sem_team.event_manager;
 
+import ru.kpfu.itis.sem_team.app.GuiUno;
 import ru.kpfu.itis.sem_team.app.IApp;
-import ru.kpfu.itis.sem_team.app.Uno;
 import ru.kpfu.itis.sem_team.event.Event;
 import ru.kpfu.itis.sem_team.event_listeners.IEventListener;
 import ru.kpfu.itis.sem_team.exceptions.EventManagerException;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UnoEventManager implements IEventManager {
     private List<IEventListener> listeners;
-    private Uno uno;
+    private GuiUno uno;
 
     @Override
     public void addEventListener(IEventListener listener) {
@@ -20,10 +20,10 @@ public class UnoEventManager implements IEventManager {
 
     @Override
     public void register(IApp app) {
-        if (!app.getClass().equals(Uno.class)) {
+        if (!app.getClass().equals(GuiUno.class)) {
             throw new EventManagerException("Unable to register app: incorrect class");
         }
-        this.uno = (Uno) app;
+        this.uno = (GuiUno) app;
     }
 
     @Override

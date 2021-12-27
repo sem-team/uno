@@ -33,6 +33,11 @@ public class Event implements IEvent {
         this.parameters = parameters;
     }
 
+    @Override
+    public void addParameter(String key, Object value) {
+        parameters.put(key, value);
+    }
+
     public static Event from(IMessage message) {
         Event event = new Event();
         event.setParameters(message.getParameters());

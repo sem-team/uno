@@ -1,18 +1,18 @@
-package ru.kpfu.itis.sem_team.event_listeners.uno_listeners;
+package ru.kpfu.itis.sem_team.event_listeners.uno_listeners.client_uno_event_listeners;
 
+import ru.kpfu.itis.sem_team.app.GuiUno;
 import ru.kpfu.itis.sem_team.app.IApp;
-import ru.kpfu.itis.sem_team.app.Uno;
 import ru.kpfu.itis.sem_team.event_listeners.IEventListener;
 import ru.kpfu.itis.sem_team.exceptions.EventListenerException;
 
-public abstract class AbstractUnoEventListener implements IEventListener {
-    protected Uno uno;
+public abstract class AbstractClientUnoEventListener implements IEventListener {
+    protected GuiUno uno;
 
     @Override
     public void init(IApp app) {
-        if (!app.getClass().equals(Uno.class)) {
+        if (!app.getClass().equals(GuiUno.class)) {
             throw new EventListenerException("Unable to register app: incorrect class");
         }
-        this.uno = (Uno) app;
+        this.uno = (GuiUno) app;
     }
 }

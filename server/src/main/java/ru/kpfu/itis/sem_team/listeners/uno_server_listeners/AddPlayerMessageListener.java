@@ -8,7 +8,7 @@ public class AddPlayerMessageListener extends UnoServerMessageListener{
     @Override
     public void handle(int connectionId, IMessage message) {
         Integer type = (Integer) message.getParameter("type");
-        if (type == null || type == UnoProtocol.MESSAGE_PLAYER) {
+        if (type == null || !(type == UnoProtocol.MESSAGE_PLAYER)) {
             return;
         }
 

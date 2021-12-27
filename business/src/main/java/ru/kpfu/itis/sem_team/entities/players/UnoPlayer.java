@@ -2,6 +2,7 @@ package ru.kpfu.itis.sem_team.entities.players;
 
 import ru.kpfu.itis.sem_team.entities.cards.*;
 import ru.kpfu.itis.sem_team.entities.exceptions.UnoException;
+import ru.kpfu.itis.sem_team.entities.games.AbstractGame;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.entities.boards.UnoBoard;
@@ -184,6 +185,16 @@ public class UnoPlayer extends AbstractPlayer {
     public void deleteRoom(AbstractRoom room) throws UnoException {
         if (room.getAdmin().equals(this)) {
             room.delete();
+        }
+        else {
+            throw new UnoException();
+        }
+    }
+
+    @Override
+    public void startGame(AbstractGame game) throws UnoException {
+        if (this.equals(game.getRoom().getAdmin())) {
+            game.start();
         }
         else {
             throw new UnoException();

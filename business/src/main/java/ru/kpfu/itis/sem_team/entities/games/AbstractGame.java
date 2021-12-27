@@ -37,6 +37,9 @@ public abstract class AbstractGame extends Observable implements Observer {
         return room;
     }
 
+    public abstract void start();
+    public abstract void end();
+
     @Override
     public void update(Observable o, IEvent event) {
 

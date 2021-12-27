@@ -25,12 +25,14 @@ public class UnoGame extends AbstractGame {
         }
     }
 
+    @Override
     public void start() {
         this.hasStarted = true;
         giveCards();
         setNextActivePlayer();
     }
 
+    @Override
     public void end() {
         this.hasEnded = true;
     }

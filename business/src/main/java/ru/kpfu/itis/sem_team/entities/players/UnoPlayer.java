@@ -1,6 +1,7 @@
 package ru.kpfu.itis.sem_team.entities.players;
 
 import ru.kpfu.itis.sem_team.entities.cards.*;
+import ru.kpfu.itis.sem_team.entities.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.entities.boards.UnoBoard;
@@ -26,20 +27,26 @@ public class UnoPlayer extends AbstractPlayer {
         game.giveCard(this);
     }
 
-    public void sayUno() {
+    public void sayUno() throws UnoException {
         if (!saidUno && cards.size() == 2) {
             saidUno = true;
         }
+        else {
+            throw new UnoException();
+        }
     }
 
-    public void sayNotUno(UnoPlayer player, UnoGame game) {
+    public void sayNotUno(UnoPlayer player, UnoGame game) throws UnoException {
         if (!player.saidUno && player.getCards().size() == 2) {
             player.saidUno = false;
             player.askCard(game);
         }
+        else {
+            throw new UnoException();
+        }
     }
 
-    public void useCard(UnoCard card, UnoBoard board) {
+    public void useCard(UnoCard card, UnoBoard board) throws UnoException {
         if (card.getClass().equals(AddingCard.class)) {
             useAddingCard(card, board);
         }
@@ -65,7 +72,7 @@ public class UnoPlayer extends AbstractPlayer {
         //TODO: ask for a color from user
     }
 
-    private void useMissingRoundCard(UnoCard card, UnoBoard board) {
+    private void useMissingRoundCard(UnoCard card, UnoBoard board) throws UnoException {
         UnoCard lastUsedCard = board.getLastUsedCard();
         MissingRoundCard missingRoundCard = (MissingRoundCard) card;
         if (lastUsedCard == null) {
@@ -80,9 +87,12 @@ public class UnoPlayer extends AbstractPlayer {
             board.setLastUsedCard(card);
             missingRoundCard.missRound((UnoGame) board.getGame());
         }
+        else {
+            throw new UnoException();
+        }
     }
 
-    private void useChangingDirectionCard(UnoCard card, UnoBoard board) {
+    private void useChangingDirectionCard(UnoCard card, UnoBoard board) throws UnoException {
         UnoCard lastUsedCard = board.getLastUsedCard();
         ChangingDirectionCard changingDirectionCard = (ChangingDirectionCard) card;
         if (lastUsedCard == null) {
@@ -97,6 +107,9 @@ public class UnoPlayer extends AbstractPlayer {
             board.setLastUsedCard(card);
             changingDirectionCard.changeDirection(board);
         }
+        else {
+            throw new UnoException();
+        }
     }
 
     private void useAddingWildcard(UnoCard card, UnoBoard board) {
@@ -106,7 +119,7 @@ public class UnoPlayer extends AbstractPlayer {
         //TODO: ask for a color from user
     }
 
-    private void useAddingCard(UnoCard card, UnoBoard board) {
+    private void useAddingCard(UnoCard card, UnoBoard board) throws UnoException {
         UnoCard lastUsedCard = board.getLastUsedCard();
         AddingCard addingCard = (AddingCard) card;
         if (lastUsedCard == null) {
@@ -121,9 +134,12 @@ public class UnoPlayer extends AbstractPlayer {
             board.setLastUsedCard(card);
             addingCard.addCards(((UnoGame) board.getGame()).getNextActivePlayer(), addingCard.getAddsCards(), board);
         }
+        else {
+            throw new UnoException();
+        }
     }
 
-    private void useUnoCard(UnoCard card, UnoBoard board) {
+    private void useUnoCard(UnoCard card, UnoBoard board) throws UnoException {
         UnoCard lastUsedCard = board.getLastUsedCard();
         if (lastUsedCard == null) {
             board.setLastUsedCard(card);
@@ -133,6 +149,9 @@ public class UnoPlayer extends AbstractPlayer {
         }
         else if (lastUsedCard.getColor().equals(Color.COLORLESS) && card.getColor().equals(board.getColor())) {
             board.setLastUsedCard(card);
+        }
+        else {
+            throw new UnoException();
         }
     }
 

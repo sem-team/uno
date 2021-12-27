@@ -14,9 +14,15 @@ public class LeaveRoomMessageListener extends UnoServerMessageListener {
     public void handle(int connectionId, IMessage message) {
         Integer type = (Integer) message.getParameter("type");
         if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_PLAYER)) {
-            UnoPlayer player = message.getParameter(UnoPlayer.class);
-            UnoRoom room = message.getParameter(UnoRoom.class);
+            UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
+            UnoRoom messageRoom = message.getParameter(UnoRoom.class);
+
+            UnoPlayer player = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messagePlayer);
+            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoom(messageRoom);
+
             player.leaveRoom(room);
+
+            message.addParameter("room", room);
             server.sendMessageBroadcast(message);
         }
     }

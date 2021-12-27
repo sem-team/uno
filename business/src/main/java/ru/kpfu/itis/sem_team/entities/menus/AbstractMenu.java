@@ -73,6 +73,15 @@ public abstract class AbstractMenu extends Observable implements Observer {
         return null;
     }
 
+    public AbstractRoom getRoomByPlayer(AbstractPlayer player) {
+        for (AbstractRoom room : rooms) {
+            if (room.getParticipants().contains(player)) {
+                return room;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void update(Observable o, IEvent event) {
 

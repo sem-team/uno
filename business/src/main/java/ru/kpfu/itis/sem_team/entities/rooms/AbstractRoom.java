@@ -1,6 +1,7 @@
 package ru.kpfu.itis.sem_team.entities.rooms;
 
 import ru.kpfu.itis.sem_team.entities.games.AbstractGame;
+import ru.kpfu.itis.sem_team.entities.menus.AbstractMenu;
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.util.Observable;

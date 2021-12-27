@@ -28,6 +28,10 @@ public class UnoPlayer extends AbstractPlayer {
         game.giveCard(this);
     }
 
+    public void askCards(UnoGame game, int number) {
+        game.giveCards(this, number);
+    }
+
     public void sayUno() throws UnoException {
         if (!saidUno && cards.size() == 2) {
             saidUno = true;

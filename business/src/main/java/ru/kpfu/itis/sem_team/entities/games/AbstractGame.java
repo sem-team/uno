@@ -41,4 +41,8 @@ public abstract class AbstractGame extends Observable implements Observer {
     public void update(Observable o, IEvent event) {
 
     }
+
+    public boolean isHasStarted() {
+        return hasStarted;
+    }
 }

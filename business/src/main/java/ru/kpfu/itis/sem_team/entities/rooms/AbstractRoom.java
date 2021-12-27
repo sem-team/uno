@@ -26,7 +26,6 @@ public abstract class AbstractRoom extends Observable implements Observer {
 
     public void delete() {
         game = null;
-        participants.clear();
         admin = null;
     }
 

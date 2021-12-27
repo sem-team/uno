@@ -181,8 +181,13 @@ public class UnoPlayer extends AbstractPlayer {
     }
 
     @Override
-    public void deleteRoom(AbstractRoom room) {
-        room.delete();
+    public void deleteRoom(AbstractRoom room) throws UnoException {
+        if (room.getAdmin().equals(this)) {
+            room.delete();
+        }
+        else {
+            throw new UnoException();
+        }
     }
 
     public List<UnoCard> getCards() {

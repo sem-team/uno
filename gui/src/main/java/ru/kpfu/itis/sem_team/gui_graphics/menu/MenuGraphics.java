@@ -1,4 +1,4 @@
-package ru.kpfu.itis.sem_team.gui_elements.menu;
+package ru.kpfu.itis.sem_team.gui_graphics.menu;
 
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -6,14 +6,14 @@ import javafx.scene.layout.BorderPane;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.event.Event;
 import ru.kpfu.itis.sem_team.event.IEvent;
-import ru.kpfu.itis.sem_team.gui_elements.AbstractGuiElement;
-import ru.kpfu.itis.sem_team.gui_elements.menu.menu_elements.MenuRoomDisplay;
+import ru.kpfu.itis.sem_team.gui_graphics.AbstractGuiGraphics;
+import ru.kpfu.itis.sem_team.gui_graphics.menu.menu_elements.MenuRoomDisplay;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.util.Observable;
 
 import java.util.List;
 
-public class MenuElement extends AbstractGuiElement {
+public class MenuGraphics extends AbstractGuiGraphics {
     List<MenuRoomDisplay> rooms;
 
     @Override
@@ -26,7 +26,7 @@ public class MenuElement extends AbstractGuiElement {
         }
         pane.setCenter(roomsGroup);
 
-        Button createRoomButton = new Button("Create new Room");
+        Button createRoomButton = new Button("Create new room");
         createRoomButton.setOnAction(event -> createRoom());
 
         pane.setBottom(createRoomButton);

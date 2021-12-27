@@ -19,13 +19,10 @@ public class ConsolePingServerMessageListener implements IServerMessageListener 
 
     @Override
     public void handle(int connectionId, IMessage message) {
-        String type = message.getParameter(String.class);
-        if (type.equals("ping")) {
-            System.out.println("Got ping from connection " + connectionId);
-        }
-
         IMessage responseMessage = new Message();
-        responseMessage.addParameter("type", "pong");
+        responseMessage.addParameter("type", TYPE);
+        responseMessage.addParameter("action", ACTION);
+
         server.sendMessage(connectionId, responseMessage);
     }
 

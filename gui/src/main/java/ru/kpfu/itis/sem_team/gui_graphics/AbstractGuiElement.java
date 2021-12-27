@@ -1,4 +1,4 @@
-package ru.kpfu.itis.sem_team.gui_elements;
+package ru.kpfu.itis.sem_team.gui_graphics;
 
 import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.util.Observable;

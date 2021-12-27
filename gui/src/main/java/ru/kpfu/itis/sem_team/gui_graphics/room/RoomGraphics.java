@@ -1,4 +1,4 @@
-package ru.kpfu.itis.sem_team.gui_elements.room;
+package ru.kpfu.itis.sem_team.gui_graphics.room;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -6,14 +6,15 @@ import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.event.Event;
 import ru.kpfu.itis.sem_team.event.IEvent;
-import ru.kpfu.itis.sem_team.gui_elements.AbstractGuiElement;
-import ru.kpfu.itis.sem_team.gui_elements.room.room_elements.RoomPlayerDisplay;
+import ru.kpfu.itis.sem_team.gui_graphics.AbstractGuiElement;
+import ru.kpfu.itis.sem_team.gui_graphics.AbstractGuiGraphics;
+import ru.kpfu.itis.sem_team.gui_graphics.room.room_elements.RoomPlayerDisplay;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.util.Observable;
 
 import java.util.List;
 
-public class Room extends AbstractGuiElement {
+public class RoomGraphics extends AbstractGuiGraphics {
     private UnoRoom room;
     private List<RoomPlayerDisplay> players;
 

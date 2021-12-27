@@ -1,4 +1,4 @@
-package ru.kpfu.itis.sem_team.gui_elements.menu.menu_elements;
+package ru.kpfu.itis.sem_team.gui_graphics.menu.menu_elements;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,7 +8,7 @@ import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.event.Event;
 import ru.kpfu.itis.sem_team.event.IEvent;
-import ru.kpfu.itis.sem_team.gui_elements.AbstractGuiElement;
+import ru.kpfu.itis.sem_team.gui_graphics.AbstractGuiElement;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.util.Observable;
 

@@ -48,4 +48,9 @@ public abstract class AbstractMenu {
     public void setPlayers(List<AbstractPlayer> players) {
         this.players = players;
     }
+
+    public boolean isPlayerValid(AbstractPlayer newPlayer) {
+        return players.stream()
+                .anyMatch(player -> player.getName().equals(newPlayer.getName()));
+    }
 }

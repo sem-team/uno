@@ -9,6 +9,11 @@ public abstract class AbstractRoom {
     protected AbstractGame game;
     protected List<AbstractPlayer> participants;
     protected AbstractPlayer admin;
+    protected final int maxNumberOfParticipants;
+
+    protected AbstractRoom(int maxNumberOfParticipants) {
+        this.maxNumberOfParticipants = maxNumberOfParticipants;
+    }
 
     //TODO: Get rid of unnecessary getters & setters
 
@@ -48,5 +53,9 @@ public abstract class AbstractRoom {
 
     public void removePlayer(AbstractPlayer player) {
         participants.remove(player);
+    }
+
+    public int getMaxNumberOfParticipants() {
+        return maxNumberOfParticipants;
     }
 }

@@ -60,6 +60,7 @@ public class UnoBoard extends AbstractBoard {
 
     public void setLastUsedCard(UnoCard lastUsedCard) {
         this.lastUsedCard = lastUsedCard;
+        setColor(lastUsedCard.getColor());
     }
 
     private UnoCard getRandomUnoCard() {
@@ -79,7 +80,7 @@ public class UnoBoard extends AbstractBoard {
     }
 
     private AddingWildcard getRandomAddingWildcard() {
-        return new AddingWildcard();
+        return new AddingWildcard(4);
     }
 
     private MissingRoundCard getRandomMissingRoundCard() {

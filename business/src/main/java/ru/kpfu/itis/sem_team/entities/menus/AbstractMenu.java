@@ -13,8 +13,6 @@ public abstract class AbstractMenu extends Observable implements Observer {
     protected List<AbstractRoom> rooms;
     protected List<AbstractPlayer> players;
 
-    //TODO: Get rid of unnecessary getters & setters
-
     public AbstractMenu() {
         rooms = new ArrayList<>();
         players = new ArrayList<>();
@@ -55,6 +53,24 @@ public abstract class AbstractMenu extends Observable implements Observer {
     public boolean isPlayerValid(AbstractPlayer newPlayer) {
         return players.stream()
                 .anyMatch(player -> player.getName().equals(newPlayer.getName()));
+    }
+
+    public AbstractRoom getRoom(AbstractRoom providedRoom) {
+        for (AbstractRoom room : rooms) {
+            if (providedRoom.getParticipants().equals(room.getParticipants())) {
+                return room;
+            }
+        }
+        return null;
+    }
+
+    public AbstractPlayer getPlayer(AbstractPlayer providedPlayer) {
+        for (AbstractPlayer player : players) {
+            if (providedPlayer.getName().equals(player.getName())) {
+                return player;
+            }
+        }
+        return null;
     }
 
     @Override

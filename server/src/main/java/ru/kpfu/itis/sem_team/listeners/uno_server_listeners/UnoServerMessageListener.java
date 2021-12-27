@@ -15,4 +15,8 @@ public abstract class UnoServerMessageListener implements IServerMessageListener
         }
         this.server = (UnoServer) server;
     }
+
+    public boolean isMessageTypeAcceptable(Integer providedType, Integer intendedType) {
+        return providedType != null && providedType.equals(intendedType);
+    }
 }

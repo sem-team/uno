@@ -24,9 +24,6 @@ public class UnoPlayer extends AbstractPlayer {
 
     public void askCard(UnoGame game) {
         game.giveCard(this);
-        if (saidUno) {
-            saidUno = false;
-        }
     }
 
     public void sayUno() {
@@ -37,6 +34,7 @@ public class UnoPlayer extends AbstractPlayer {
 
     public void sayNotUno(UnoPlayer player, UnoGame game) {
         if (!player.saidUno && player.getCards().size() == 2) {
+            player.saidUno = false;
             player.askCard(game);
         }
     }

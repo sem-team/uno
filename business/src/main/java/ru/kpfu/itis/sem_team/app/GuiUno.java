@@ -22,13 +22,7 @@ public class GuiUno extends Uno {
         manager.register(this);
     }
 
-    public static GuiUno from(Uno uno) {
-        GuiUno guiUno = (GuiUno) uno;
-        guiUno.init();
-        return guiUno;
-    }
-
-    public UnoGraphics getGui() {
+    public UnoGraphics getGraphics() {
         return gui;
     }
 
@@ -46,5 +40,11 @@ public class GuiUno extends Uno {
 
     public UnoGame getCurrentGame() {
         return (UnoGame) getCurrentRoom().getGame();
+    }
+
+    public static GuiUno from(Uno uno) {
+        GuiUno guiUno = (GuiUno) uno;
+        guiUno.init();
+        return guiUno;
     }
 }

@@ -1,9 +1,9 @@
-package ru.kpfu.itis.sem_team.gui_elements.room.room_elements;
+package ru.kpfu.itis.sem_team.gui_graphics.room.room_elements;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
-import ru.kpfu.itis.sem_team.gui_elements.AbstractGuiElement;
+import ru.kpfu.itis.sem_team.gui_graphics.AbstractGuiElement;
 
 public class RoomPlayerDisplay extends AbstractGuiElement {
     private UnoPlayer player;

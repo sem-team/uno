@@ -19,6 +19,11 @@
             <artifactId>protocol</artifactId>
             <version>0.1</version>
         </dependency>
+        <dependency>
+            <groupId>ru.kpfu.itis.sem-team</groupId>
+            <artifactId>business</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
 </project>

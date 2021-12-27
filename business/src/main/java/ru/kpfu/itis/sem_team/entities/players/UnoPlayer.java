@@ -22,8 +22,6 @@ public class UnoPlayer extends AbstractPlayer {
         cards = new ArrayList<>();
     }
 
-    //TODO: useCard
-
     public void askCard(UnoGame game) {
         game.giveCard(this);
         if (saidUno) {

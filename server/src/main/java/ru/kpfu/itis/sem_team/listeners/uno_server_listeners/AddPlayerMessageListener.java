@@ -14,6 +14,7 @@ public class AddPlayerMessageListener extends UnoServerMessageListener{
 
         UnoPlayer player = message.getParameter(UnoPlayer.class);
         if (server.getUnoApp().getMenu().isPlayerValid(player)) {
+            server.getUnoApp().getMenu().addPlayer(player);
             message.addParameter("valid", true);
             server.sendMessageBroadcast(message);
         } else {

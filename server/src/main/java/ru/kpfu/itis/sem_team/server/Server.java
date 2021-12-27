@@ -60,7 +60,10 @@ public class Server implements IServer {
                     processKey(key);
                 }
             } catch (IOException e) {
-                throw new ServerException("Something happened while listening for new messages", e);
+                System.out.println("Something happened while listening for new messages");
+                e.printStackTrace();
+            } catch (ServerException e) {
+                e.printStackTrace();
             }
         }
     }

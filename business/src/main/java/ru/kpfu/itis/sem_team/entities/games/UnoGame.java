@@ -4,6 +4,8 @@ import ru.kpfu.itis.sem_team.entities.boards.UnoBoard;
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
+import ru.kpfu.itis.sem_team.event.Event;
+import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 import java.util.List;
 

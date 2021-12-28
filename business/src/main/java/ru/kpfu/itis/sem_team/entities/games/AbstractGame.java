@@ -7,7 +7,7 @@ import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.util.Observable;
 import ru.kpfu.itis.sem_team.util.Observer;
 
-public abstract class AbstractGame extends Observable implements Observer {
+public abstract class AbstractGame extends Observable {
     protected boolean hasStarted;
     protected boolean hasEnded;
     protected AbstractBoard board;
@@ -39,11 +39,6 @@ public abstract class AbstractGame extends Observable implements Observer {
 
     public abstract void start();
     public abstract void end();
-
-    @Override
-    public void update(Observable o, IEvent event) {
-
-    }
 
     public boolean isHasStarted() {
         return hasStarted;

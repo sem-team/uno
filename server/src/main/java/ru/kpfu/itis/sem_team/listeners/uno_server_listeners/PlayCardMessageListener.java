@@ -2,7 +2,7 @@ package ru.kpfu.itis.sem_team.listeners.uno_server_listeners;
 
 import ru.kpfu.itis.sem_team.entities.boards.UnoBoard;
 import ru.kpfu.itis.sem_team.entities.cards.UnoCard;
-import ru.kpfu.itis.sem_team.entities.exceptions.UnoException;
+import ru.kpfu.itis.sem_team.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.entities.games.UnoGame;
 import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;

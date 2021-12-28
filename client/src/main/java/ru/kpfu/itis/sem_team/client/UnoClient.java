@@ -10,6 +10,8 @@ public class UnoClient extends Client {
 
     public UnoClient(String host, int port) {
         super(host, port);
+
+        unoApp = new GuiUno();
     }
 
     @Override
@@ -19,10 +21,10 @@ public class UnoClient extends Client {
     }
 
     private void init() {
-        fetchApp();
+        fetchGameState();
     }
 
-    private void fetchApp() {
+    private void fetchGameState() {
         IMessage message = new Message();
         message.addParameter("type", UnoProtocol.MESSAGE_APP);
         message.addParameter("action", "get");

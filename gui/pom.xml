@@ -24,6 +24,11 @@
             <artifactId>business</artifactId>
             <version>0.1</version>
         </dependency>
+        <dependency>
+            <groupId>ru.kpfu.itis.sem_team</groupId>
+            <artifactId>client</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
 </project>

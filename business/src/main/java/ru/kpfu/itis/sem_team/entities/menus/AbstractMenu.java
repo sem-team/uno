@@ -2,14 +2,16 @@ package ru.kpfu.itis.sem_team.entities.menus;
 
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
+import ru.kpfu.itis.sem_team.event.Event;
 import ru.kpfu.itis.sem_team.event.IEvent;
+import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.util.Observable;
 import ru.kpfu.itis.sem_team.util.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractMenu extends Observable implements Observer {
+public abstract class AbstractMenu extends Observable {
     protected List<AbstractRoom> rooms;
     protected List<AbstractPlayer> players;
 
@@ -20,18 +22,22 @@ public abstract class AbstractMenu extends Observable implements Observer {
 
     public void addPlayer(AbstractPlayer player) {
         players.add(player);
+        notifyObservers(new Event(UnoProtocol.MESSAGE_PLAYER, "connect"));
     }
 
     public void removePlayer(AbstractPlayer player) {
         players.remove(player);
+        notifyObservers(new Event(UnoProtocol.MESSAGE_PLAYER, "leave"));
     }
 
     public void addRoom(AbstractRoom room) {
         rooms.add(room);
+        notifyObservers(new Event(UnoProtocol.MESSAGE_ROOM, "create"));
     }
 
     public void removeRoom(AbstractRoom room) {
         rooms.remove(room);
+        notifyObservers(new Event(UnoProtocol.MESSAGE_ROOM, "remove"));
     }
 
     public List<AbstractRoom> getRooms() {
@@ -80,10 +86,5 @@ public abstract class AbstractMenu extends Observable implements Observer {
             }
         }
         return null;
-    }
-
-    @Override
-    public void update(Observable o, IEvent event) {
-
     }
 }

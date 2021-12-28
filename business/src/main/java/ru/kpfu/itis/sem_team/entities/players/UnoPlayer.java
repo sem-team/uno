@@ -1,7 +1,7 @@
 package ru.kpfu.itis.sem_team.entities.players;
 
 import ru.kpfu.itis.sem_team.entities.cards.*;
-import ru.kpfu.itis.sem_team.entities.exceptions.UnoException;
+import ru.kpfu.itis.sem_team.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.entities.games.AbstractGame;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
@@ -10,7 +10,6 @@ import ru.kpfu.itis.sem_team.entities.games.UnoGame;
 import ru.kpfu.itis.sem_team.entities.menus.AbstractMenu;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class UnoPlayer extends AbstractPlayer {

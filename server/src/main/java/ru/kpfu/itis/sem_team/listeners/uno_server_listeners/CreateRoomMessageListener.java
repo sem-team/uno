@@ -18,6 +18,7 @@ public class CreateRoomMessageListener extends UnoServerMessageListener {
 
             UnoPlayer player = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messagePlayer);
             UnoRoom room = new UnoRoom(player);
+            server.getUnoApp().getMenu().addRoom(room);
 
             message.addParameter("newRoom", room);
             server.sendMessageBroadcast(message);

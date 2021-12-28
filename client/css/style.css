@@ -13,7 +13,11 @@
     -fx-font-size: 12px;
     -fx-padding: 10 20 10 20;
 }
-
+.label {
+    -fx-font-family: "Helvetica";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 30px;
+}
 .gameButton{
     -fx-background-color:
             #090a0c,

@@ -1,6 +1,8 @@
 package ru.kpfu.itis.sem_team.gui.views;
 
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -42,24 +44,28 @@ public class MenuView implements IView {
             roomGroup.getChildren().add(buildRoomDisplay((UnoRoom) room));
         }
         view.setCenter(roomGroup);
-
+        view.getStyleClass().add("menuStage");
         Button createRoomButton = new Button("Create room");
+        createRoomButton.getStyleClass().add("menuBtn");
         createRoomButton.setOnAction(event -> controller.addRoom());
+        view.setPadding(new Insets(20,20,20,20));
         view.setBottom(createRoomButton);
     }
 
     public Node buildRoomDisplay(UnoRoom room) {
         VBox box = new VBox();
-
+        box.setAlignment(Pos.CENTER);
         AbstractPlayer admin = room.getAdmin();
-
-        box.getChildren().add(new Label(admin.getName()));
+        Label label = new Label(admin.getName());
+        label.getStyleClass().add("label");
+        box.getChildren().add(label);
 
         room.getParticipants().stream()
                 .filter(player -> !player.equals(admin))
                 .forEach(player -> box.getChildren().addAll(new Label(player.getName())));
 
         Button joinRoomButton = new Button("Join");
+        joinRoomButton.getStyleClass().add("mainBtn");
         joinRoomButton.setOnAction(event -> controller.joinRoom(room));
         box.getChildren().add(joinRoomButton);
 

@@ -26,8 +26,6 @@ public class GiveCardMessageListener extends UnoServerMessageListener {
             else {
                 player.askCards((UnoGame) room.getGame(), amount);
             }
-            message.addParameter("askedCardsPlayer", player);
-            message.addParameter("askedCardsRoom", room);
             server.sendMessageBroadcast(message);
         }
     }

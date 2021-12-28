@@ -1,6 +1,5 @@
 package ru.kpfu.itis.sem_team.message_logger;
 
-import ru.kpfu.itis.sem_team.app.Uno;
 import ru.kpfu.itis.sem_team.message.IMessage;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 

@@ -1,4 +1,4 @@
-package ru.kpfu.itis.sem_team.views;
+package ru.kpfu.itis.sem_team.gui.views;
 
 import javafx.scene.Parent;
 import ru.kpfu.itis.sem_team.util.Observer;

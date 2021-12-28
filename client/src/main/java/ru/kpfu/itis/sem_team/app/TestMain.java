@@ -11,7 +11,7 @@ import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import java.io.IOException;
 
 
-public class Main {
+public class TestMain {
     public static void main(String[] args){
         try (Client client = new Client("127.0.0.1", UnoProtocol.STANDARD_PORT)) {
             IClientMessageManager manager = new ClientMessageManager();

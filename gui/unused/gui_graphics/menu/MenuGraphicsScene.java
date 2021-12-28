@@ -30,7 +30,7 @@ public class MenuGraphicsScene extends AbstractGraphicsScene {
         createRoomButton.setOnAction(event -> createRoom());
 
         pane.setBottom(createRoomButton);
-        graphics = pane;
+        ru.kpfu.itis.sem_team.graphics = pane;
     }
 
     private void createRoom() {

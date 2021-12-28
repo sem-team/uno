@@ -1,4 +1,4 @@
-package ru.kpfu.itis.sem_team.services;
+package ru.kpfu.itis.sem_team.gui.services;
 
 public interface IDisplayService {
     void displayMenu();

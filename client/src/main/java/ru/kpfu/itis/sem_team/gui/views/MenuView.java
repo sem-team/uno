@@ -1,4 +1,4 @@
-package ru.kpfu.itis.sem_team.views;
+package ru.kpfu.itis.sem_team.gui.views;
 
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import ru.kpfu.itis.sem_team.controllers.MenuController;
+import ru.kpfu.itis.sem_team.gui.controllers.MenuController;
 import ru.kpfu.itis.sem_team.entities.menus.UnoMenu;
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;

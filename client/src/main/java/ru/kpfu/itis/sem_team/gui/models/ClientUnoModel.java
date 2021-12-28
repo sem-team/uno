@@ -1,25 +1,18 @@
-package ru.kpfu.itis.sem_team.app;
+package ru.kpfu.itis.sem_team.gui.models;
 
+import ru.kpfu.itis.sem_team.models.UnoModel;
 import ru.kpfu.itis.sem_team.entities.games.UnoGame;
+import ru.kpfu.itis.sem_team.entities.menus.UnoMenu;
 import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
-import ru.kpfu.itis.sem_team.graphics.UnoGraphics;
 
-public class GuiUno extends Uno {
-    private UnoGraphics graphics;
+public class ClientUnoModel extends UnoModel {
+    private UnoMenu menu;
     private UnoPlayer currentPlayer;
 
-    public GuiUno() {
-        init();
-    }
-
-    private void init() {
-        graphics = new UnoGraphics(this);
-    }
-
-    public UnoGraphics getGraphics() {
-        return graphics;
+    public ClientUnoModel() {
+        super();
     }
 
     public UnoPlayer getCurrentPlayer() {
@@ -38,9 +31,4 @@ public class GuiUno extends Uno {
         return (UnoGame) getCurrentRoom().getGame();
     }
 
-    public static GuiUno from(Uno uno) {
-        GuiUno guiUno = (GuiUno) uno;
-        guiUno.init();
-        return guiUno;
-    }
 }

@@ -10,14 +10,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import ru.kpfu.itis.sem_team.client.UnoClient;
+import ru.kpfu.itis.sem_team.gui.controllers.GameController;
 import ru.kpfu.itis.sem_team.gui.services.*;
+import ru.kpfu.itis.sem_team.gui.views.GameView;
 import ru.kpfu.itis.sem_team.gui.views.MenuView;
 import ru.kpfu.itis.sem_team.gui.controllers.MenuController;
 import ru.kpfu.itis.sem_team.gui.controllers.RoomController;
@@ -25,27 +25,28 @@ import ru.kpfu.itis.sem_team.gui.views.RoomView;
 import ru.kpfu.itis.sem_team.message_manager.UnoClientMessageManager;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 
 public class UnoGraphics extends Application {
     private Stage stage;
     private MenuView menuView;
     private RoomView roomView;
+    private GameView gameView;
 
     //business logic
     private UnoClient client;
 
     //services
-    IGameService gameService;
-    IMessageService messageService;
-    IDisplayService displayService;
+    private IGameService gameService;
+    private IMessageService messageService;
+    private IDisplayService displayService;
 
     //controllers
-    MenuController menuController;
-    RoomController roomController;
+    private MenuController menuController;
+    private RoomController roomController;
+    private GameController gameController;
+
 
     private void build() {
         client = new UnoClient("127.0.0.1", UnoProtocol.STANDARD_PORT);
@@ -64,7 +65,8 @@ public class UnoGraphics extends Application {
 
         //create controllers
         menuController = new MenuController(displayService, gameService, messageService);
-        roomController = new RoomController(gameService, messageService);
+        roomController = new RoomController(displayService, gameService, messageService);
+        gameController = new GameController(displayService, messageService);
 
         //create views
         menuView = new MenuView(client.getModel().getMenu(), menuController);
@@ -115,6 +117,12 @@ public class UnoGraphics extends Application {
         //create view when new room is selected
         roomView = new RoomView(client.getModel().getCurrentRoom(), roomController);
         stage.getScene().setRoot(roomView.asParent());
+    }
+
+    public void displayGame() {
+        //create view when new game started
+        gameView = new GameView(client.getModel().getCurrentGame(), gameController);
+        stage.getScene().setRoot(gameView.asParent());
     }
 
     public static void main(String[] args) {

@@ -22,6 +22,6 @@ public class DisplayService implements IDisplayService {
 
     @Override
     public void displayGame() {
-
+        graphics.displayGame();
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public class UnoPlayer extends AbstractPlayer {
 
     private boolean saidUno;
-    private List<UnoCard> cards;
+    private List<UnoCard> cards = new ArrayList<>();
 
     public UnoPlayer(String name, int id) {
         super(name, id);

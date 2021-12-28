@@ -64,6 +64,7 @@ public class RoomView implements IView {
 
     @Override
     public void update(Observable o, IEvent event) {
+
         Platform.runLater(this::buildView);
     }
 }

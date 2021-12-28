@@ -66,14 +66,14 @@ public class UnoGame extends AbstractGame {
     public void setNextActivePlayer() {
         if (!((UnoBoard) this.board).isClockwise()) {
             if (numberOfActivePlayer - 1 < 0) {
-                numberOfActivePlayer = this.room.getMaxNumberOfParticipants() - 1;
+                numberOfActivePlayer = this.room.getParticipants().size() - 1;
             }
             else {
                 numberOfActivePlayer -= 1;
             }
         }
         else {
-            if (numberOfActivePlayer + 2 > this.getRoom().getMaxNumberOfParticipants()) {
+            if (numberOfActivePlayer + 2 > this.getRoom().getParticipants().size()) {
                 numberOfActivePlayer = 0;
             }
             else {

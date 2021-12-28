@@ -1,7 +1,6 @@
 package ru.kpfu.itis.sem_team.gui.controllers;
 
-import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
-import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
+import ru.kpfu.itis.sem_team.gui.services.IDisplayService;
 import ru.kpfu.itis.sem_team.gui.services.IGameService;
 import ru.kpfu.itis.sem_team.gui.services.IMessageService;
 import ru.kpfu.itis.sem_team.message.IMessage;
@@ -9,10 +8,12 @@ import ru.kpfu.itis.sem_team.message.Message;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class RoomController {
+    private IDisplayService displayService;
     private IGameService gameService;
     private IMessageService messageService;
 
-    public RoomController(IGameService gameService, IMessageService messageService) {
+    public RoomController(IDisplayService displayService, IGameService gameService, IMessageService messageService) {
+        this.displayService = displayService;
         this.gameService = gameService;
         this.messageService = messageService;
     }
@@ -35,5 +36,9 @@ public class RoomController {
         message.addParameter("room", gameService.getCurrentRoom());
 
         messageService.sendMessage(message);
+    }
+
+    public void displayGame() {
+        displayService.displayGame();
     }
 }

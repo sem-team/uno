@@ -7,9 +7,6 @@ import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class JoinRoomMessageListener extends AbstractUnoClientMessageListener {
 
-    public static final int TYPE = UnoProtocol.MESSAGE_PLAYER;
-    public static final String ACTION = "connect";
-
     @Override
     public void handle(IMessage message) {
         UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
@@ -22,11 +19,11 @@ public class JoinRoomMessageListener extends AbstractUnoClientMessageListener {
 
     @Override
     public Integer getType() {
-        return TYPE;
+        return UnoProtocol.MESSAGE_PLAYER;
     }
 
     @Override
     public String getAction() {
-        return ACTION;
+        return "connect";
     }
 }

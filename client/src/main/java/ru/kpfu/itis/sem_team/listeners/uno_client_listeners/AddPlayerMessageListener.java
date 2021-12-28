@@ -6,9 +6,6 @@ import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class AddPlayerMessageListener extends AbstractUnoClientMessageListener {
 
-    public static final int TYPE = UnoProtocol.MESSAGE_PLAYER;
-    public static final String ACTION = "create";
-
     @Override
     public void handle(IMessage message) {
         UnoPlayer player = (UnoPlayer) message.getParameter("player");
@@ -17,11 +14,11 @@ public class AddPlayerMessageListener extends AbstractUnoClientMessageListener {
 
     @Override
     public Integer getType() {
-        return TYPE;
+        return UnoProtocol.MESSAGE_PLAYER;
     }
 
     @Override
     public String getAction() {
-        return ACTION;
+        return "create";
     }
 }

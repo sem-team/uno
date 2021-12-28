@@ -33,11 +33,11 @@ public class SayNoUnoMessageListener extends AbstractUnoClientMessageListener {
 
     @Override
     public Integer getType() {
-        return TYPE;
+        return UnoProtocol.MESSAGE_PLAYER;
     }
 
     @Override
     public String getAction() {
-        return ACTION;
+        return "noUno";
     }
 }

@@ -31,9 +31,11 @@ public class MenuController {
     public void joinRoom(UnoRoom room) {
         IMessage message = new Message();
         message.addParameter("type", UnoProtocol.MESSAGE_PLAYER);
-        message.addParameter("action", "join");
+        message.addParameter("action", "connect");
         message.addParameter("player", gameService.getCurrentPlayer());
         message.addParameter("room", room);
+
+        messageService.sendMessage(message);
     }
 
     public void displayRoom() {

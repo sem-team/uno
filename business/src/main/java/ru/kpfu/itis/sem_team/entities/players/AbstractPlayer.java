@@ -16,6 +16,7 @@ public abstract class AbstractPlayer extends Observable implements IPlayer, Obse
     }
 
     public AbstractPlayer(int id) {
+        this.name = "player_" + id;
         this.id = id;
     }
 

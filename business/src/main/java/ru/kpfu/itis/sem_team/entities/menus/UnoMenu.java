@@ -8,8 +8,4 @@ import ru.kpfu.itis.sem_team.util.Observable;
 
 public class UnoMenu extends AbstractMenu {
 
-    @Override
-    public void update(Observable o, IEvent event) {
-
-    }
 }

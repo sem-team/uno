@@ -22,6 +22,7 @@ public abstract class AbstractMenu extends Observable implements Observer, Seria
 
     public void addRoom(AbstractRoom room) {
         rooms.add(room);
+        room.addObserver(this);
         notifyObservers(new Event(UnoProtocol.MESSAGE_ROOM, "create"));
     }
 
@@ -59,6 +60,6 @@ public abstract class AbstractMenu extends Observable implements Observer, Seria
 
     @Override
     public void update(Observable o, IEvent event) {
-
+        notifyObservers(event);
     }
 }

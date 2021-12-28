@@ -63,8 +63,7 @@ public class Server implements IServer {
                 System.out.println("Something happened while listening for new messages");
                 e.printStackTrace();
             } catch (ServerException e) {
-                e.printStackTrace();
-                selector.selectedKeys().clear();
+                throw new ServerException(e);
             }
         }
     }

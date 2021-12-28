@@ -23,6 +23,7 @@ public class PlayCardMessageListener extends UnoServerMessageListener {
         try {
             player.useCard(messageCard, (UnoBoard) game.getBoard());
             message.addParameter("room", room);
+            message.addParameter("valid", true);
             server.sendMessageBroadcast(message);
 
         } catch (UnoException e) {

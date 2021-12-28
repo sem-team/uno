@@ -20,6 +20,7 @@ public class StartGameMessageListener extends UnoServerMessageListener {
         UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
         try {
             player.startGame(room.getGame());
+            message.addParameter("valid", true);
             server.sendMessageBroadcast(message);
         } catch (UnoException e) {
             message.addParameter("valid", false);

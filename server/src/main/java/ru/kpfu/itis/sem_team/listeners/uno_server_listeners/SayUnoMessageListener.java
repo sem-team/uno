@@ -16,6 +16,7 @@ public class SayUnoMessageListener extends UnoServerMessageListener {
         UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
         try {
             player.sayUno();
+            message.addParameter("valid", true);
             server.sendMessageBroadcast(message);
         } catch (UnoException e) {
             message.addParameter("valid", false);

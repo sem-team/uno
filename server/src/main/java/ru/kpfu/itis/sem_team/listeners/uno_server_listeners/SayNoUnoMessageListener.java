@@ -21,6 +21,7 @@ public class SayNoUnoMessageListener extends UnoServerMessageListener {
 
         try {
             sourcePlayer.sayNotUno(destinationPlayer, game);
+            message.addParameter("valid", true);
             server.sendMessageBroadcast(message);
         } catch (UnoException e) {
             message.addParameter("valid", false);

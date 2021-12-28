@@ -18,10 +18,14 @@ public class UnoPlayer extends AbstractPlayer {
     private boolean saidUno;
     private List<UnoCard> cards;
 
-    public UnoPlayer(String name) {
-        super(name);
+    public UnoPlayer(String name, int id) {
+        super(name, id);
         saidUno = false;
         cards = new ArrayList<>();
+    }
+
+    public UnoPlayer(int id) {
+        super(id);
     }
 
     public void askCard(UnoGame game) {

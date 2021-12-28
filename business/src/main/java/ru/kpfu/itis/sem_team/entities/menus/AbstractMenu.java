@@ -8,6 +8,7 @@ import ru.kpfu.itis.sem_team.util.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class AbstractMenu extends Observable implements Observer {
     protected List<AbstractRoom> rooms;
@@ -41,10 +42,10 @@ public abstract class AbstractMenu extends Observable implements Observer {
         return null;
     }
 
-
     public AbstractRoom getRoomByPlayer(AbstractPlayer player) {
         for (AbstractRoom room : rooms) {
-            if (room.getParticipants().contains(player)) {
+            List<Integer> ids = room.getParticipants().stream().map(AbstractPlayer::getId).collect(Collectors.toList());
+            if (ids.contains(player.getId())) {
                 return room;
             }
         }

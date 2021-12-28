@@ -18,15 +18,14 @@ public class SayNoUnoMessageListener extends UnoServerMessageListener {
         if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_PLAYER)) {
             UnoPlayer messageSourcePlayer = (UnoPlayer) message.getParameter("sourcePlayer");
             UnoPlayer messageDestinationPlayer = (UnoPlayer) message.getParameter("destinationPlayer");
-            UnoRoom messagedRoom = (UnoRoom) message.getParameter(UnoGame.class).getRoom();
 
-            UnoPlayer sourcePlayer = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messageSourcePlayer);
-            UnoPlayer destinationPlayer = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messageDestinationPlayer);
-            UnoGame game = (UnoGame) server.getUnoApp().getMenu().getRoom(messagedRoom).getGame();
+            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messageSourcePlayer);
+            UnoPlayer sourcePlayer = (UnoPlayer) room.getPlayer(messageSourcePlayer);
+            UnoPlayer destinationPlayer = (UnoPlayer) room.getPlayer(messageDestinationPlayer);
+            UnoGame game = (UnoGame) room.getGame();
 
             try {
                 sourcePlayer.sayNotUno(destinationPlayer, game);
-                message.addParameter("notSayUnoPlayer", destinationPlayer);
                 server.sendMessageBroadcast(message);
             } catch (UnoException e) {
                 message.addParameter("valid", false);

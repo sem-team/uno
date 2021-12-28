@@ -16,8 +16,8 @@ public class GiveCardMessageListener extends UnoServerMessageListener {
         Integer type = (Integer) message.getParameter("type");
         if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_CARD)) {
             UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
-            UnoPlayer player = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messagePlayer);
-            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(player);
+            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messagePlayer);
+            UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
 
             Integer amount = (Integer) message.getParameter("amount");
             if (amount == null) {

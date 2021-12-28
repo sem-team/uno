@@ -19,8 +19,6 @@ public abstract class AbstractRoom extends Observable implements Observer {
         this.maxNumberOfParticipants = maxNumberOfParticipants;
     }
 
-    //TODO: Get rid of unnecessary getters & setters
-
     public AbstractGame getGame() {
         return game;
     }
@@ -60,6 +58,15 @@ public abstract class AbstractRoom extends Observable implements Observer {
 
     public int getMaxNumberOfParticipants() {
         return maxNumberOfParticipants;
+    }
+
+    public AbstractPlayer getPlayer(AbstractPlayer player) {
+        for (AbstractPlayer participant : participants) {
+            if (player.getId() == participant.getId()) {
+                return participant;
+            }
+        }
+        return null;
     }
 
     @Override

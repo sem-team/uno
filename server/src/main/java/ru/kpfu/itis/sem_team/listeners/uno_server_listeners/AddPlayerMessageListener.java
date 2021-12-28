@@ -13,15 +13,9 @@ public class AddPlayerMessageListener extends UnoServerMessageListener {
     public void handle(int connectionId, IMessage message) {
         Integer type = (Integer) message.getParameter("type");
         if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_PLAYER)) {
-            UnoPlayer player = message.getParameter(UnoPlayer.class);
-            if (server.getUnoApp().getMenu().isPlayerValid(player)) {
-                message.addParameter("valid", true);
-                server.sendMessage(connectionId, message);
-            } else {
-                message.addParameter("valid", false);
-                server.sendMessage(connectionId, message);
-                AddPlayerMessageListener listener = new AddPlayerMessageListener();
-            }
+            UnoPlayer player = new UnoPlayer(connectionId);
+            message.addParameter("player", player);
+            server.sendMessage(connectionId, message);
         }
     }
 }

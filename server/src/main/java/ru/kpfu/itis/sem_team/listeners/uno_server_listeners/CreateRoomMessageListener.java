@@ -14,13 +14,11 @@ public class CreateRoomMessageListener extends UnoServerMessageListener {
     public void handle(int connectionId, IMessage message) {
         Integer type = (Integer) message.getParameter("type");
         if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_ROOM)) {
-            UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
-
-            UnoPlayer player = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messagePlayer);
+            UnoPlayer player = message.getParameter(UnoPlayer.class);
             UnoRoom room = new UnoRoom(player);
             server.getUnoApp().getMenu().addRoom(room);
 
-            message.addParameter("newRoom", room);
+            message.addParameter("room", room);
             server.sendMessageBroadcast(message);
         }
     }

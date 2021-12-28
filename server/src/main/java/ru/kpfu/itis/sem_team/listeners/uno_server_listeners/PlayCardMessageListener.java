@@ -21,12 +21,13 @@ public class PlayCardMessageListener extends UnoServerMessageListener {
             UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
             UnoCard messageCard = message.getParameter(UnoCard.class);
 
-            UnoPlayer player = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messagePlayer);
-            UnoGame game = (UnoGame) server.getUnoApp().getMenu().getRoomByPlayer(player).getGame();
+            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messagePlayer);
+            UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
+            UnoGame game = (UnoGame) room.getGame();
 
             try {
                 player.useCard(messageCard, (UnoBoard) game.getBoard());
-                message.addParameter("playedCardRoom", (UnoRoom) game.getRoom());
+                message.addParameter("room", room);
                 server.sendMessageBroadcast(message);
 
             } catch (UnoException e) {

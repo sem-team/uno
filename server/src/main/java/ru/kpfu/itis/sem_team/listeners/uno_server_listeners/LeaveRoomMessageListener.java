@@ -17,9 +17,8 @@ public class LeaveRoomMessageListener extends UnoServerMessageListener {
             UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
             UnoRoom messageRoom = message.getParameter(UnoRoom.class);
 
-            UnoPlayer player = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messagePlayer);
             UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoom(messageRoom);
-
+            UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
             player.leaveRoom(room);
 
             server.sendMessageBroadcast(message);

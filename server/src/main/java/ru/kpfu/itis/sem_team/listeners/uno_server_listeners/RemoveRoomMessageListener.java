@@ -18,13 +18,12 @@ public class RemoveRoomMessageListener extends UnoServerMessageListener {
             UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
             UnoRoom messageRoom = message.getParameter(UnoRoom.class);
 
-            UnoPlayer player = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messagePlayer);
             UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoom(messageRoom);
-
+            UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
             try {
                 player.deleteRoom(room);
                 server.getUnoApp().getMenu().removeRoom(room);
-                message.addParameter("deletedRoom", room);
+                message.addParameter("room", room);
                 server.sendMessageBroadcast(message);
                 room.getParticipants().clear();
             } catch (UnoException e) {

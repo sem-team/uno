@@ -2,6 +2,7 @@ package ru.kpfu.itis.sem_team.listeners.uno_server_listeners;
 
 import ru.kpfu.itis.sem_team.entities.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
+import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.message.IMessage;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
@@ -16,10 +17,10 @@ public class SayUnoMessageListener extends UnoServerMessageListener {
         if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_PLAYER)) {
             UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
 
-            UnoPlayer player = (UnoPlayer) server.getUnoApp().getMenu().getPlayer(messagePlayer);
+            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messagePlayer);
+            UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
             try {
                 player.sayUno();
-                message.addParameter("sayUnoPlayer", player);
                 server.sendMessageBroadcast(message);
             } catch (UnoException e) {
                 message.addParameter("valid", false);

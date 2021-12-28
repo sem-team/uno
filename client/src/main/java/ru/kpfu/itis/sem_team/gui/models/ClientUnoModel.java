@@ -27,6 +27,10 @@ public class ClientUnoModel extends UnoModel {
         return null;
     }
 
+    public void setCurrentPlayer(UnoPlayer currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
     public UnoGame getCurrentGame() {
         return (UnoGame) getCurrentRoom().getGame();
     }

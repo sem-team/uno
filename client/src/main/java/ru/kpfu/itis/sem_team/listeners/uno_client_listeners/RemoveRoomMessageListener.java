@@ -2,7 +2,7 @@ package ru.kpfu.itis.sem_team.listeners.uno_client_listeners;
 
 import ru.kpfu.itis.sem_team.message.IMessage;
 
-public class RemoveRoomMessageListener extends AbstractUnoClientListener {
+public class RemoveRoomMessageListener extends AbstractUnoClientMessageListener {
     @Override
     public void handle(IMessage message) {
 

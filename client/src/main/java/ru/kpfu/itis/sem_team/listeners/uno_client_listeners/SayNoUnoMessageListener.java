@@ -1,13 +1,13 @@
 package ru.kpfu.itis.sem_team.listeners.uno_client_listeners;
 
-import ru.kpfu.itis.sem_team.entities.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.entities.games.UnoGame;
 import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
+import ru.kpfu.itis.sem_team.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.message.IMessage;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
-public class SayNoUnoMessageListener extends AbstractUnoClientListener {
+public class SayNoUnoMessageListener extends AbstractUnoClientMessageListener {
 
     public static final int TYPE = UnoProtocol.MESSAGE_PLAYER;
     public static final String ACTION = "noUno";
@@ -18,9 +18,9 @@ public class SayNoUnoMessageListener extends AbstractUnoClientListener {
         UnoPlayer messageDestinationPlayer = (UnoPlayer) message.getParameter("destinationPlayer");
         Boolean isValid = (Boolean) message.getParameter("valid");
 
-        UnoPlayer sourcePlayer = (UnoPlayer) client.getUnoApp().getMenu().getPlayer(messageSourcePlayer);
-        UnoPlayer destinationPlayer = (UnoPlayer) client.getUnoApp().getMenu().getPlayer(messageDestinationPlayer);
-        UnoRoom room = (UnoRoom) client.getUnoApp().getMenu().getRoomByPlayer(sourcePlayer);
+        UnoRoom room = (UnoRoom) client.getModel().getMenu().getRoomByPlayer(messageSourcePlayer);
+        UnoPlayer sourcePlayer = (UnoPlayer) room.getPlayer(messageSourcePlayer);
+        UnoPlayer destinationPlayer = (UnoPlayer) room.getPlayer(messageDestinationPlayer);
 
         if (isValid) {
             try {

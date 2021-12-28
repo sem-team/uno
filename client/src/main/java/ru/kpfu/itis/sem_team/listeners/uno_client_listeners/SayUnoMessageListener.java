@@ -7,10 +7,6 @@ import ru.kpfu.itis.sem_team.message.IMessage;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class SayUnoMessageListener extends AbstractUnoClientMessageListener {
-
-    public static final int TYPE = UnoProtocol.MESSAGE_PLAYER;
-    public static final String ACTION = "uno";
-
     @Override
     public void handle(IMessage message) {
         UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
@@ -30,11 +26,11 @@ public class SayUnoMessageListener extends AbstractUnoClientMessageListener {
 
     @Override
     public Integer getType() {
-        return TYPE;
+        return UnoProtocol.MESSAGE_PLAYER;
     }
 
     @Override
     public String getAction() {
-        return ACTION;
+        return "uno";
     }
 }

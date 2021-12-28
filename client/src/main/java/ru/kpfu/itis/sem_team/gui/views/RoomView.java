@@ -27,7 +27,9 @@ public class RoomView implements IView {
     }
 
     private void buildView() {
-        view = new BorderPane();
+        if (view == null) {
+            view = new BorderPane();
+        }
 
         HBox playersBox = new HBox();
 

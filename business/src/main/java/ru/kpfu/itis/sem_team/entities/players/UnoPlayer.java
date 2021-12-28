@@ -25,6 +25,7 @@ public class UnoPlayer extends AbstractPlayer {
 
     public UnoPlayer(int id) {
         super(id);
+
     }
 
     public void askCard(UnoGame game) {

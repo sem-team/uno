@@ -1,6 +1,8 @@
 package ru.kpfu.itis.sem_team.gui.views;
 
+import javafx.application.Platform;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,6 +21,7 @@ public class MenuView implements IView {
     private UnoMenu menu;
     private MenuController controller;
     private BorderPane view;
+    private VBox roomGroup;
 
     public MenuView(UnoMenu menu, MenuController controller) {
         this.menu = menu;
@@ -29,8 +32,11 @@ public class MenuView implements IView {
     }
 
     public void buildView() {
-        view = new BorderPane();
-        Group roomGroup = new Group();
+        if (view == null) {
+            view = new BorderPane();
+        }
+
+        roomGroup = new VBox();
 
         for (AbstractRoom room : menu.getRooms()) {
             roomGroup.getChildren().add(buildRoomDisplay((UnoRoom) room));
@@ -42,7 +48,7 @@ public class MenuView implements IView {
         view.setBottom(createRoomButton);
     }
 
-    public Parent buildRoomDisplay(UnoRoom room) {
+    public Node buildRoomDisplay(UnoRoom room) {
         VBox box = new VBox();
 
         AbstractPlayer admin = room.getAdmin();
@@ -51,10 +57,11 @@ public class MenuView implements IView {
 
         room.getParticipants().stream()
                 .filter(player -> !player.equals(admin))
-                .forEach(player -> box.getChildren().add(new Label(player.getName())));
+                .forEach(player -> box.getChildren().addAll(new Label(player.getName())));
 
         Button joinRoomButton = new Button("Join");
         joinRoomButton.setOnAction(event -> controller.joinRoom(room));
+        box.getChildren().add(joinRoomButton);
 
         return box;
     }
@@ -69,11 +76,11 @@ public class MenuView implements IView {
     public void update(Observable o, IEvent event) {
         Integer type = (Integer) event.getParameter("type");
         String action = (String) event.getParameter("action");
-        if (type == UnoProtocol.MESSAGE_PLAYER & action.equals("join")) {
+        if (type == UnoProtocol.MESSAGE_PLAYER & action.equals("connect")) {
             controller.displayRoom();
             return;
         }
         // refresh view if other updates occurred
-        buildView();
+        Platform.runLater(this::buildView);
     }
 }

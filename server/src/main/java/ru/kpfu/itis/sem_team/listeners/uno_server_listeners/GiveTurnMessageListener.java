@@ -10,15 +10,12 @@ public class GiveTurnMessageListener extends UnoServerMessageListener {
 
     @Override
     public void handle(int connectionId, IMessage message) {
-        Integer type = (Integer) message.getParameter("type");
-        if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_GAME)) {
-            UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
-            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messagePlayer);
-            ((UnoGame) room.getGame()).finishTurn();
+        UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
+        UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messagePlayer);
+        ((UnoGame) room.getGame()).finishTurn();
 
-            message.addParameter("room", room);
-            server.sendMessageBroadcast(message);
-        }
+        message.addParameter("room", room);
+        server.sendMessageBroadcast(message);
     }
 
     @Override

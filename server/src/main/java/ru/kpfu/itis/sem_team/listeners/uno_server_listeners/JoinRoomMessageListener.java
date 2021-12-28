@@ -9,17 +9,14 @@ public class JoinRoomMessageListener extends UnoServerMessageListener {
 
     @Override
     public void handle(int connectionId, IMessage message) {
-        Integer type = (Integer) message.getParameter("type");
-        if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_PLAYER)) {
-            UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
-            UnoRoom messageRoom = message.getParameter(UnoRoom.class);
+        UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
+        UnoRoom messageRoom = message.getParameter(UnoRoom.class);
 
-            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoom(messageRoom);
-            UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
-            player.joinRoom(room);
+        UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoom(messageRoom);
+        UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
+        player.joinRoom(room);
 
-            server.sendMessageBroadcast(message);
-        }
+        server.sendMessageBroadcast(message);
     }
 
     @Override

@@ -13,30 +13,27 @@ public class StartGameMessageListener extends UnoServerMessageListener {
 
     @Override
     public void handle(int connectionId, IMessage message) {
-        Integer type = (Integer) message.getParameter("type");
-        if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_GAME)) {
-            UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
-            UnoRoom messageRoom = message.getParameter(UnoRoom.class);
+        UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
+        UnoRoom messageRoom = message.getParameter(UnoRoom.class);
 
-            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoom(messageRoom);
-            UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
-            try {
-                player.startGame(room.getGame());
-                server.sendMessageBroadcast(message);
-            } catch (UnoException e) {
-                message.addParameter("valid", false);
-                server.sendMessage(connectionId, message);
-            }
+        UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoom(messageRoom);
+        UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
+        try {
+            player.startGame(room.getGame());
+            server.sendMessageBroadcast(message);
+        } catch (UnoException e) {
+            message.addParameter("valid", false);
+            server.sendMessage(connectionId, message);
         }
     }
 
     @Override
     public Integer getType() {
-        return TYPE;
+        return UnoProtocol.MESSAGE_GAME;
     }
 
     @Override
     public String getAction() {
-        return ACTION;
+        return "start";
     }
 }

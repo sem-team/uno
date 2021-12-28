@@ -13,24 +13,21 @@ public class PlayCardMessageListener extends UnoServerMessageListener {
 
     @Override
     public void handle(int connectionId, IMessage message) {
-        Integer type = (Integer) message.getParameter("type");
-        if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_CARD)) {
-            UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
-            UnoCard messageCard = message.getParameter(UnoCard.class);
+        UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
+        UnoCard messageCard = message.getParameter(UnoCard.class);
 
-            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messagePlayer);
-            UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
-            UnoGame game = (UnoGame) room.getGame();
+        UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messagePlayer);
+        UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
+        UnoGame game = (UnoGame) room.getGame();
 
-            try {
-                player.useCard(messageCard, (UnoBoard) game.getBoard());
-                message.addParameter("room", room);
-                server.sendMessageBroadcast(message);
+        try {
+            player.useCard(messageCard, (UnoBoard) game.getBoard());
+            message.addParameter("room", room);
+            server.sendMessageBroadcast(message);
 
-            } catch (UnoException e) {
-                message.addParameter("valid", false);
-                server.sendMessage(connectionId, message);
-            }
+        } catch (UnoException e) {
+            message.addParameter("valid", false);
+            server.sendMessage(connectionId, message);
         }
     }
 

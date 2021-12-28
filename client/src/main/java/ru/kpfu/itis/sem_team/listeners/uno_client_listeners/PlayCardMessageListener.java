@@ -7,6 +7,7 @@ import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.message.IMessage;
+import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class PlayCardMessageListener extends AbstractUnoClientMessageListener {
     @Override
@@ -28,6 +29,13 @@ public class PlayCardMessageListener extends AbstractUnoClientMessageListener {
         }
     }
 
-    // TODO: add getters
+    @Override
+    public Integer getType() {
+        return UnoProtocol.MESSAGE_CARD;
+    }
 
+    @Override
+    public String getAction() {
+        return "play";
+    }
 }

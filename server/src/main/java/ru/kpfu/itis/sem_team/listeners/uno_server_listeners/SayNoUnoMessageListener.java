@@ -11,23 +11,20 @@ public class SayNoUnoMessageListener extends UnoServerMessageListener {
 
     @Override
     public void handle(int connectionId, IMessage message) {
-        Integer type = (Integer) message.getParameter("type");
-        if (isMessageTypeAcceptable(type, UnoProtocol.MESSAGE_PLAYER)) {
-            UnoPlayer messageSourcePlayer = (UnoPlayer) message.getParameter("sourcePlayer");
-            UnoPlayer messageDestinationPlayer = (UnoPlayer) message.getParameter("destinationPlayer");
+        UnoPlayer messageSourcePlayer = (UnoPlayer) message.getParameter("sourcePlayer");
+        UnoPlayer messageDestinationPlayer = (UnoPlayer) message.getParameter("destinationPlayer");
 
-            UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messageSourcePlayer);
-            UnoPlayer sourcePlayer = (UnoPlayer) room.getPlayer(messageSourcePlayer);
-            UnoPlayer destinationPlayer = (UnoPlayer) room.getPlayer(messageDestinationPlayer);
-            UnoGame game = (UnoGame) room.getGame();
+        UnoRoom room = (UnoRoom) server.getUnoApp().getMenu().getRoomByPlayer(messageSourcePlayer);
+        UnoPlayer sourcePlayer = (UnoPlayer) room.getPlayer(messageSourcePlayer);
+        UnoPlayer destinationPlayer = (UnoPlayer) room.getPlayer(messageDestinationPlayer);
+        UnoGame game = (UnoGame) room.getGame();
 
-            try {
-                sourcePlayer.sayNotUno(destinationPlayer, game);
-                server.sendMessageBroadcast(message);
-            } catch (UnoException e) {
-                message.addParameter("valid", false);
-                server.sendMessage(connectionId, message);
-            }
+        try {
+            sourcePlayer.sayNotUno(destinationPlayer, game);
+            server.sendMessageBroadcast(message);
+        } catch (UnoException e) {
+            message.addParameter("valid", false);
+            server.sendMessage(connectionId, message);
         }
     }
 

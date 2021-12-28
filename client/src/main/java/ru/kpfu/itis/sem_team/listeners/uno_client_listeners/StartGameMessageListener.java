@@ -4,6 +4,7 @@ import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.message.IMessage;
+import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class StartGameMessageListener extends AbstractUnoClientMessageListener {
     @Override
@@ -24,5 +25,13 @@ public class StartGameMessageListener extends AbstractUnoClientMessageListener {
         }
     }
 
-    // TODO: add getters
+    @Override
+    public String getAction() {
+        return "start";
+    }
+
+    @Override
+    public Integer getType() {
+        return UnoProtocol.MESSAGE_GAME;
+    }
 }

@@ -12,6 +12,7 @@ import ru.kpfu.itis.sem_team.util.Observer;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class AbstractRoom extends Observable implements Observer, Serializable {
     protected AbstractGame game;
@@ -30,6 +31,22 @@ public abstract class AbstractRoom extends Observable implements Observer, Seria
     public void delete() {
         game = null;
         admin = null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AbstractRoom)) return false;
+        AbstractRoom that = (AbstractRoom) o;
+        return maxNumberOfParticipants == that.maxNumberOfParticipants &&
+                Objects.equals(game, that.game) &&
+                Objects.equals(participants, that.participants) &&
+                Objects.equals(admin, that.admin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(game, participants, admin, maxNumberOfParticipants);
     }
 
     public void setGame(AbstractGame game) {

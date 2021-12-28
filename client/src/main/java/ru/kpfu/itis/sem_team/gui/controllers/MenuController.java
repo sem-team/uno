@@ -1,5 +1,6 @@
 package ru.kpfu.itis.sem_team.gui.controllers;
 
+import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.gui.services.IDisplayService;
 import ru.kpfu.itis.sem_team.gui.services.IGameService;
 import ru.kpfu.itis.sem_team.gui.services.IMessageService;
@@ -17,6 +18,10 @@ public class MenuController {
         this.displayService = displayService;
         this.gameService = gameService;
         this.messageService = messageService;
+    }
+
+    public AbstractPlayer getCurrentPlayer() {
+        return gameService.getCurrentPlayer();
     }
 
     public void addRoom() {

@@ -1,5 +1,7 @@
 package ru.kpfu.itis.sem_team.gui.controllers;
 
+import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
+import ru.kpfu.itis.sem_team.entities.players.UnoPlayer;
 import ru.kpfu.itis.sem_team.gui.services.IGameService;
 import ru.kpfu.itis.sem_team.gui.services.IMessageService;
 import ru.kpfu.itis.sem_team.message.IMessage;

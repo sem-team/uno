@@ -86,6 +86,14 @@ public class MenuView implements IView {
             controller.displayRoom();
             return;
         }
+        if (type == UnoProtocol.MESSAGE_ROOM & action.equals("create")) {
+            UnoRoom room = event.getParameter(UnoRoom.class);
+            if (controller.getCurrentPlayer().equals(room.getAdmin())) {
+                controller.displayRoom();
+                return;
+            }
+        }
+
         // refresh view if other updates occurred
         Platform.runLater(this::buildView);
     }

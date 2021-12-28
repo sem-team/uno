@@ -1,7 +1,6 @@
 package ru.kpfu.itis.sem_team.gui.views;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,9 +31,9 @@ public class RoomView implements IView {
         if (view == null) {
             view = new BorderPane();
         }
-        view.getStyleClass().add("menuStage");
+
         HBox playersBox = new HBox();
-        playersBox.setAlignment(Pos.CENTER);
+
         AbstractPlayer admin = room.getAdmin();
 
         playersBox.getChildren().add(new Label(admin.getName()));
@@ -46,18 +45,15 @@ public class RoomView implements IView {
         view.setCenter(playersBox);
 
         VBox buttonsBox = new VBox();
-        buttonsBox.setAlignment(Pos.CENTER);
+
         Button joinRoomButton = new Button("Start");
-        joinRoomButton.getStyleClass().add("menuBtn");
         joinRoomButton.setOnAction(event -> controller.startGame());
         buttonsBox.getChildren().add(joinRoomButton);
 
         Button leaveRoomButton = new Button("Leave");
-        leaveRoomButton.getStyleClass().add("menuBtn");
         leaveRoomButton.setOnAction(event -> controller.leaveRoom());
         buttonsBox.getChildren().add(leaveRoomButton);
-        buttonsBox.setSpacing(20);
-        view.setPadding(new Insets(10,10,10,10));
+
         view.setBottom(buttonsBox);
     }
 
@@ -68,6 +64,6 @@ public class RoomView implements IView {
 
     @Override
     public void update(Observable o, IEvent event) {
-        buildView();
+        Platform.runLater(this::buildView);
     }
 }

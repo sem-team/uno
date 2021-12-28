@@ -61,7 +61,7 @@ public class Client implements IClient{
         listenThread = new Thread(() -> {
             while (selector.isOpen()) {
                 try {
-                    int num = selector.selectNow();
+                    int num = selector.select();
                     if (num == 0) continue;
                     Iterator<SelectionKey> it = selector.selectedKeys().iterator();
                     while(it.hasNext()) {

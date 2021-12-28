@@ -154,12 +154,13 @@ public class Server implements IServer {
     @Override
     public void sendMessageBroadcast(IMessage message) {
         ByteBuffer messageBuffer = ByteBuffer.wrap(message.formMessage());
-        channels.forEach(channel -> {
+        for (SocketChannel channel : channels) {
             try {
                 channel.write(messageBuffer);
+                messageBuffer.rewind();
             } catch (IOException e) {
                 throw new ServerException("Unable to send message", e);
             }
-        });
+        }
     }
 }

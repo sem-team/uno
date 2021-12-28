@@ -1,14 +1,14 @@
-package ru.kpfu.itis.sem_team.services;
+package ru.kpfu.itis.sem_team.gui.services;
 
-import ru.kpfu.itis.sem_team.app.GuiUno;
+import ru.kpfu.itis.sem_team.gui.models.ClientUnoModel;
 import ru.kpfu.itis.sem_team.entities.games.AbstractGame;
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 
 public class GameService implements IGameService {
-    private GuiUno uno;
+    private ClientUnoModel uno;
 
-    public GameService(GuiUno uno) {
+    public GameService(ClientUnoModel uno) {
         this.uno = uno;
     }
 

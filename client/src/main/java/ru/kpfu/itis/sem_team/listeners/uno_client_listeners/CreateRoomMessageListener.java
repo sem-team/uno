@@ -15,7 +15,7 @@ public class CreateRoomMessageListener extends AbstractUnoClientMessageListener 
     public void handle(IMessage message) {
         UnoPlayer messagePlayer = message.getParameter(UnoPlayer.class);
 
-        UnoMenu menu =  client.getUnoApp().getMenu();
+        UnoMenu menu =  client.getModel().getMenu();
         UnoPlayer player = (UnoPlayer) menu.getPlayer(messagePlayer);
         menu.addRoom(new UnoRoom(player));
     }

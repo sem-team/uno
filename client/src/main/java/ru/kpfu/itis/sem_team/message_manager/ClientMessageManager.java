@@ -29,6 +29,7 @@ public class ClientMessageManager implements IClientMessageManager {
 
     @Override
     public void handle(IMessage message) {
+        System.out.println(message);
         Integer type = (Integer) message.getParameter("type");
         String action = (String) message.getParameter("action");
         listeners.forEach(listener -> {

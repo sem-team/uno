@@ -15,11 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx</artifactId>
-            <version>11.0.1</version>
-        </dependency>
-        <dependency>
             <groupId>ru.kpfu.itis.sem-team</groupId>
             <artifactId>business</artifactId>
             <version>0.1</version>
@@ -29,6 +24,10 @@
             <artifactId>client</artifactId>
             <version>0.1</version>
         </dependency>
+        <dependency>
+            <groupId>de.saxsys</groupId>
+            <artifactId>jfx-testrunner</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
-
 </project>

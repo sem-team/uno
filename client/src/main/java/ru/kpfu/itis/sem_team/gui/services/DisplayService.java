@@ -1,6 +1,6 @@
-package ru.kpfu.itis.sem_team.services;
+package ru.kpfu.itis.sem_team.gui.services;
 
-import ru.kpfu.itis.sem_team.graphics.UnoGraphics;
+import ru.kpfu.itis.sem_team.app.UnoGraphics;
 
 public class DisplayService implements IDisplayService {
     private UnoGraphics graphics;

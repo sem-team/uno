@@ -1,10 +1,10 @@
-package ru.kpfu.itis.sem_team.controllers;
+package ru.kpfu.itis.sem_team.gui.controllers;
 
+import ru.kpfu.itis.sem_team.gui.services.IGameService;
+import ru.kpfu.itis.sem_team.gui.services.IMessageService;
 import ru.kpfu.itis.sem_team.message.IMessage;
 import ru.kpfu.itis.sem_team.message.Message;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
-import ru.kpfu.itis.sem_team.services.IGameService;
-import ru.kpfu.itis.sem_team.services.IMessageService;
 
 public class RoomController {
     private IGameService gameService;

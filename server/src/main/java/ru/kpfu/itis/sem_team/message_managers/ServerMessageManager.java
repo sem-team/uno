@@ -23,6 +23,8 @@ public class ServerMessageManager implements IServerMessageManager {
 
     @Override
     public void handle(int connectionId, IMessage message) {
+        System.out.println(message);
+
         Integer type = (Integer) message.getParameter("type");
         String action = (String) message.getParameter("action");
 

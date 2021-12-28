@@ -1,10 +1,10 @@
 package ru.kpfu.itis.sem_team.server;
 
-import ru.kpfu.itis.sem_team.app.Uno;
+import ru.kpfu.itis.sem_team.models.UnoModel;
 import ru.kpfu.itis.sem_team.message_logger.UnoMessageLogger;
 
 public class UnoServer extends LoggingServer {
-    private Uno unoApp;
+    private UnoModel unoModelApp;
 
     public UnoServer(UnoMessageLogger logger, int port) {
         super(logger, port);
@@ -12,11 +12,11 @@ public class UnoServer extends LoggingServer {
     }
 
     private void init() {
-        unoApp = new Uno();
+        unoModelApp = new UnoModel();
     }
 
-    public Uno getUnoApp() {
-        return unoApp;
+    public UnoModel getUnoApp() {
+        return unoModelApp;
     }
 
 }

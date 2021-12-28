@@ -22,7 +22,6 @@ public class LeaveRoomMessageListener extends UnoServerMessageListener {
 
             player.leaveRoom(room);
 
-            message.addParameter("room", room);
             server.sendMessageBroadcast(message);
         }
     }

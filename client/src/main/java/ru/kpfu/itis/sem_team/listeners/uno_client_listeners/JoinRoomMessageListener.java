@@ -13,8 +13,7 @@ public class JoinRoomMessageListener extends AbstractUnoClientMessageListener {
         UnoRoom messageRoom = message.getParameter(UnoRoom.class);
 
         UnoRoom room = (UnoRoom) client.getModel().getMenu().getRoom(messageRoom);
-        UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
-        player.joinRoom(room);
+        messagePlayer.joinRoom(room);
     }
 
     @Override

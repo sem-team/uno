@@ -1,5 +1,6 @@
 package ru.kpfu.itis.sem_team.gui.views;
 
+import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -63,6 +64,6 @@ public class RoomView implements IView {
 
     @Override
     public void update(Observable o, IEvent event) {
-        buildView();
+        Platform.runLater(this::buildView);
     }
 }

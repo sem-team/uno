@@ -3,7 +3,9 @@ package ru.kpfu.itis.sem_team.entities.rooms;
 import ru.kpfu.itis.sem_team.entities.games.AbstractGame;
 import ru.kpfu.itis.sem_team.entities.menus.AbstractMenu;
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
+import ru.kpfu.itis.sem_team.event.Event;
 import ru.kpfu.itis.sem_team.event.IEvent;
+import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.util.Observable;
 import ru.kpfu.itis.sem_team.util.Observer;
 
@@ -49,11 +51,15 @@ public abstract class AbstractRoom extends Observable implements Observer {
     }
 
     public void addPlayer(AbstractPlayer player) {
+        //my code
         participants.add(player);
+        notifyObservers(new Event(UnoProtocol.MESSAGE_PLAYER, "connect"));
     }
 
     public void removePlayer(AbstractPlayer player) {
+        //my code
         participants.remove(player);
+        notifyObservers(new Event(UnoProtocol.MESSAGE_PLAYER, "leave"));
     }
 
     public int getMaxNumberOfParticipants() {

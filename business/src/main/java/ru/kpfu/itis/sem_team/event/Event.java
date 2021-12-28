@@ -8,6 +8,14 @@ import java.util.Map;
 public class Event implements IEvent {
     private Map<String, Object> parameters;
 
+    public Event() {
+    }
+
+    public Event(Integer type, String action) {
+        addParameter("type", type);
+        addParameter("action", action);
+    }
+
     @Override
     public Map<String, Object> getParameters() {
         return parameters;

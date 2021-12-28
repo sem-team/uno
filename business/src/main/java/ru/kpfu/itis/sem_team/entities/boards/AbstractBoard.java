@@ -6,6 +6,7 @@ import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.util.Observable;
 import ru.kpfu.itis.sem_team.util.Observer;
 
+
 public abstract class AbstractBoard extends Observable implements Observer {
     protected AbstractGame game;
 

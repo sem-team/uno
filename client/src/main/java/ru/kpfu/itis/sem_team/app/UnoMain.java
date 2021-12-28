@@ -2,7 +2,6 @@ package ru.kpfu.itis.sem_team.app;
 
 import ru.kpfu.itis.sem_team.client.UnoClient;
 import ru.kpfu.itis.sem_team.message_manager.IClientMessageManager;
-import ru.kpfu.itis.sem_team.message_manager.UnoClientMessageManager;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 import java.io.IOException;

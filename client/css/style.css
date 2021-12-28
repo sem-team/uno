@@ -36,6 +36,12 @@
 .menuStage{
     -fx-background-image: url("../images/unoResize.jpg");
 }
+.menuStage{
+    -fx-background-image: url("../images/unoResize.jpg");
+}
+.gameStage{
+    -fx-background-image: url("../images/game.jpg");
+}
 .menuBtn {
     -fx-background-color:
             linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),

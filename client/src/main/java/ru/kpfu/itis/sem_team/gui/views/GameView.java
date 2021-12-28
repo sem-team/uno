@@ -1,6 +1,7 @@
 package ru.kpfu.itis.sem_team.gui.views;
 
 import javafx.scene.Parent;
+import javafx.scene.layout.BorderPane;
 import ru.kpfu.itis.sem_team.entities.games.UnoGame;
 import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.gui.controllers.GameController;
@@ -15,12 +16,14 @@ public class GameView implements IView {
         this.game = game;
         this.controller = controller;
         game.addObserver(this);
-
         buildView();
     }
 
     private void buildView() {
-
+        if (view == null) {
+            view = new BorderPane();
+        }
+        view.getStyleClass().add("gameStage");
     }
 
     @Override

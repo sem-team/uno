@@ -5,7 +5,9 @@ import ru.kpfu.itis.sem_team.entities.games.AbstractGame;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 import ru.kpfu.itis.sem_team.entities.menus.AbstractMenu;
 
-public interface IPlayer {
+import java.io.Serializable;
+
+public interface IPlayer extends Serializable {
     public void joinRoom(AbstractRoom room);
     public void leaveRoom(AbstractRoom room);
     public void createRoom(AbstractMenu menu);

@@ -27,4 +27,7 @@ public class PlayCardMessageListener extends AbstractUnoClientMessageListener {
             }
         }
     }
+
+    // TODO: add getters
+
 }

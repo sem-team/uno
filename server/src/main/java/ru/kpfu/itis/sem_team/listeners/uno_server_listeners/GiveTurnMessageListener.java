@@ -8,9 +8,6 @@ import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class GiveTurnMessageListener extends UnoServerMessageListener {
 
-    private static final int TYPE = 3;
-    private static final String ACTION = "giveTurn";
-
     @Override
     public void handle(int connectionId, IMessage message) {
         Integer type = (Integer) message.getParameter("type");
@@ -22,5 +19,15 @@ public class GiveTurnMessageListener extends UnoServerMessageListener {
             message.addParameter("room", room);
             server.sendMessageBroadcast(message);
         }
+    }
+
+    @Override
+    public Integer getType() {
+        return UnoProtocol.MESSAGE_GAME;
+    }
+
+    @Override
+    public String getAction() {
+        return "giveTurn";
     }
 }

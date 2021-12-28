@@ -14,4 +14,14 @@ public class AddPlayerMessageListener extends AbstractUnoClientMessageListener {
         UnoPlayer player = (UnoPlayer) message.getParameter("player");
         client.getModel().setCurrentPlayer(player);
     }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
+    }
 }

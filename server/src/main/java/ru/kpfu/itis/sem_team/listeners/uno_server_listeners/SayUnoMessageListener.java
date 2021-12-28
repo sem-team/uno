@@ -28,4 +28,14 @@ public class SayUnoMessageListener extends UnoServerMessageListener {
             }
         }
     }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
+    }
 }

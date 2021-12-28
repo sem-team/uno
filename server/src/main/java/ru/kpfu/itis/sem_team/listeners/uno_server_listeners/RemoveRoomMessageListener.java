@@ -8,9 +8,6 @@ import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class RemoveRoomMessageListener extends UnoServerMessageListener {
 
-    private static final int TYPE = 2;
-    private static final String ACTION = "remove";
-
     @Override
     public void handle(int connectionId, IMessage message) {
         Integer type = (Integer) message.getParameter("type");
@@ -30,5 +27,15 @@ public class RemoveRoomMessageListener extends UnoServerMessageListener {
                 server.sendMessage(connectionId, message);
             }
         }
+    }
+
+    @Override
+    public Integer getType() {
+        return UnoProtocol.MESSAGE_ROOM;
+    }
+
+    @Override
+    public String getAction() {
+        return "remove";
     }
 }

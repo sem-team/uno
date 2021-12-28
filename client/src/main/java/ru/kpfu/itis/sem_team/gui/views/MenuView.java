@@ -39,6 +39,7 @@ public class MenuView implements IView {
 
         Button createRoomButton = new Button("Create room");
         createRoomButton.setOnAction(event -> controller.addRoom());
+        view.setBottom(createRoomButton);
     }
 
     public Parent buildRoomDisplay(UnoRoom room) {

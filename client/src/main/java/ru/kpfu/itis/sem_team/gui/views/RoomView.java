@@ -3,6 +3,7 @@ package ru.kpfu.itis.sem_team.gui.views;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,6 +22,8 @@ public class RoomView implements IView {
         this.room = room;
         this.controller = controller;
         room.addObserver(this);
+
+        buildView();
     }
 
     private void buildView() {

@@ -1,18 +1,19 @@
 package ru.kpfu.itis.sem_team.app;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import ru.kpfu.itis.sem_team.client.UnoClient;
 import ru.kpfu.itis.sem_team.gui.services.*;
 import ru.kpfu.itis.sem_team.gui.views.MenuView;
 import ru.kpfu.itis.sem_team.gui.controllers.MenuController;
-import ru.kpfu.itis.sem_team.gui.controllers.RegistrationController;
 import ru.kpfu.itis.sem_team.gui.controllers.RoomController;
-import ru.kpfu.itis.sem_team.gui.views.RegistrationView;
 import ru.kpfu.itis.sem_team.gui.views.RoomView;
-import ru.kpfu.itis.sem_team.message_manager.ClientMessageManager;
-import ru.kpfu.itis.sem_team.message_manager.IClientMessageManager;
+import ru.kpfu.itis.sem_team.message_manager.UnoClientMessageManager;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class UnoGraphics extends Application {
@@ -34,8 +35,9 @@ public class UnoGraphics extends Application {
 
     private void build() {
         client = new UnoClient("127.0.0.1", UnoProtocol.STANDARD_PORT);
-        IClientMessageManager manager = new ClientMessageManager();
+        UnoClientMessageManager manager = new UnoClientMessageManager();
         manager.register(client);
+        manager.addUnoMessageListeners();
 
         client.connect();
         client.listen();
@@ -57,19 +59,27 @@ public class UnoGraphics extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        build();
-        displayMenu();
+        BorderPane startBanner = new BorderPane();
+        startBanner.setStyle("-fx-background-color: #F55;");
+        Button startButton = new Button("Start");
+        startButton.setOnAction(event -> displayMenu());
+        startBanner.setCenter(startButton);
+
+        Scene scene = new Scene(startBanner, 600, 800);
+        stage.setScene(scene);
         stage.show();
+
+        build();
     }
 
     public void displayMenu() {
-        stage.setScene(new Scene(menuView.asParent()));
+        stage.getScene().setRoot(menuView.asParent());
     }
 
     public void displayRoom() {
         //create view when new room is selected
         roomView = new RoomView(client.getModel().getCurrentRoom(), roomController);
-        stage.setScene(new Scene(roomView.asParent()));
+        stage.getScene().setRoot(roomView.asParent());
     }
 
     public static void main(String[] args) {

@@ -25,6 +25,7 @@ public class ClientMessageManager implements IClientMessageManager {
     @Override
     public void register(IClient client) {
         this.client = client;
+        client.setMessageManager(this);
     }
 
     @Override

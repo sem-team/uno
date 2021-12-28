@@ -9,11 +9,13 @@ import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.util.Observable;
 import ru.kpfu.itis.sem_team.util.Observer;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractRoom extends Observable implements Observer {
+public abstract class AbstractRoom extends Observable implements Observer, Serializable {
     protected AbstractGame game;
-    protected List<AbstractPlayer> participants;
+    protected List<AbstractPlayer> participants = new ArrayList<>();
     protected AbstractPlayer admin;
     protected final int maxNumberOfParticipants;
 

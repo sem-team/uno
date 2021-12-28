@@ -19,4 +19,14 @@ public class JoinRoomMessageListener extends AbstractUnoClientMessageListener {
         UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
         player.joinRoom(room);
     }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
+    }
 }

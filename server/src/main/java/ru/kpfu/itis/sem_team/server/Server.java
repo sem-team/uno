@@ -64,6 +64,7 @@ public class Server implements IServer {
                 e.printStackTrace();
             } catch (ServerException e) {
                 e.printStackTrace();
+                selector.selectedKeys().clear();
             }
         }
     }

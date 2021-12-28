@@ -6,9 +6,6 @@ import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 public class AddPlayerMessageListener extends UnoServerMessageListener {
 
-    public static final int TYPE = 1;
-    public static final String ACTION = "create";
-
     @Override
     public void handle(int connectionId, IMessage message) {
         Integer type = (Integer) message.getParameter("type");
@@ -17,5 +14,15 @@ public class AddPlayerMessageListener extends UnoServerMessageListener {
             message.addParameter("player", player);
             server.sendMessage(connectionId, message);
         }
+    }
+
+    @Override
+    public Integer getType() {
+        return UnoProtocol.MESSAGE_PLAYER;
+    }
+
+    @Override
+    public String getAction() {
+        return "create";
     }
 }

@@ -22,4 +22,14 @@ public class GiveCardMessageListener extends AbstractUnoClientMessageListener {
             player.askCards(game, amount);
         }
     }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
+    }
 }

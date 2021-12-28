@@ -15,11 +15,14 @@ public class UnoMessageLogger implements IMessageLogger {
         SUITABLE_MESSAGE_TYPES.add(UnoProtocol.MESSAGE_PLAYER);
     }
 
+    public UnoMessageLogger() {
+        this.messages = new ArrayList<>();
+    }
 
     @Override
     public void logMessage(IMessage message) {
         Integer type = (Integer) message.getParameter("type");
-        if (SUITABLE_MESSAGE_TYPES.contains(type)) {
+        if (SUITABLE_MESSAGE_TYPES.contains(type) && !messages.contains(message)) {
             messages.add(message);
         }
     }

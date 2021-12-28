@@ -23,4 +23,6 @@ public class StartGameMessageListener extends AbstractUnoClientMessageListener {
             }
         }
     }
+
+    // TODO: add getters
 }

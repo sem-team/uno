@@ -24,4 +24,6 @@ public class RemoveRoomMessageListener extends AbstractUnoClientMessageListener 
             }
         }
     }
+
+    // TODO: add getters
 }

@@ -15,4 +15,14 @@ public class CreateRoomMessageListener extends AbstractUnoClientMessageListener 
         UnoRoom room = message.getParameter(UnoRoom.class);
         client.getModel().getMenu().addRoom(room);
     }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
+    }
 }

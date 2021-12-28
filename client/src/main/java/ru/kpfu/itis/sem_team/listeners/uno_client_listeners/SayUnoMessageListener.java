@@ -27,4 +27,14 @@ public class SayUnoMessageListener extends AbstractUnoClientMessageListener {
             }
         }
     }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
+    }
 }

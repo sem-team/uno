@@ -19,4 +19,14 @@ public class LeaveRoomMessageListener extends AbstractUnoClientMessageListener {
         UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
         player.leaveRoom(room);
     }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
+    }
 }

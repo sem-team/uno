@@ -3,10 +3,11 @@ package ru.kpfu.itis.sem_team.event;
 import ru.kpfu.itis.sem_team.message.IMessage;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Event implements IEvent {
-    private Map<String, Object> parameters;
+    private Map<String, Object> parameters = new HashMap<>();
 
     public Event() {
     }

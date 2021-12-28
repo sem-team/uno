@@ -22,4 +22,14 @@ public class CreateRoomMessageListener extends UnoServerMessageListener {
             server.sendMessageBroadcast(message);
         }
     }
+
+    @Override
+    public Integer getType() {
+        return UnoProtocol.MESSAGE_ROOM;
+    }
+
+    @Override
+    public String getAction() {
+        return "create";
+    }
 }

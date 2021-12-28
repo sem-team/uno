@@ -4,7 +4,7 @@ import ru.kpfu.itis.sem_team.exceptions.MessageException;
 import java.io.*;
 import java.util.*;
 
-public class Message implements IMessage, Serializable {
+public class Message implements IMessage {
     private final Map<String, Object> parameters;
 
     public Message() {

@@ -30,4 +30,14 @@ public class SayNoUnoMessageListener extends AbstractUnoClientMessageListener {
             }
         }
     }
+
+    @Override
+    public Integer getType() {
+        return TYPE;
+    }
+
+    @Override
+    public String getAction() {
+        return ACTION;
+    }
 }

@@ -28,7 +28,7 @@ public class RegistrationView implements IView {
         TextField nameField = new TextField();
         Button submitButton = new Button("Register");
         submitButton.setOnAction(event -> {
-            UnoPlayer player = new UnoPlayer(nameField.getText());
+            UnoPlayer player = new UnoPlayer(Integer.parseInt(nameField.getText()));
             registrationController.register(player);
         });
         box.getChildren().addAll(nameLabel ,nameField, submitButton);

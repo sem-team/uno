@@ -39,8 +39,6 @@ public abstract class AbstractRoom extends Observable implements Observer, Seria
         if (!(o instanceof AbstractRoom)) return false;
         AbstractRoom that = (AbstractRoom) o;
         return maxNumberOfParticipants == that.maxNumberOfParticipants &&
-                Objects.equals(game, that.game) &&
-                Objects.equals(participants, that.participants) &&
                 Objects.equals(admin, that.admin);
     }
 
@@ -51,6 +49,7 @@ public abstract class AbstractRoom extends Observable implements Observer, Seria
 
     public void setGame(AbstractGame game) {
         this.game = game;
+        game.addObserver(this);
     }
 
     public List<AbstractPlayer> getParticipants() {
@@ -96,6 +95,6 @@ public abstract class AbstractRoom extends Observable implements Observer, Seria
 
     @Override
     public void update(Observable o, IEvent event) {
-
+        notifyObservers(event);
     }
 }

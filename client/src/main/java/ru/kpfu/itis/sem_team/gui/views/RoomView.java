@@ -14,6 +14,7 @@ import ru.kpfu.itis.sem_team.gui.controllers.RoomController;
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.event.IEvent;
+import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.util.Observable;
 
 public class RoomView implements IView {
@@ -71,6 +72,13 @@ public class RoomView implements IView {
 
     @Override
     public void update(Observable o, IEvent event) {
+        Integer type = (Integer) event.getParameter("type");
+        String action = (String) event.getParameter("action");
+
+        if (type == UnoProtocol.MESSAGE_GAME && action.equals("start")) {
+            controller.displayGame();
+            return;
+        }
 
         Platform.runLater(this::buildView);
     }

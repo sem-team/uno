@@ -14,6 +14,7 @@ public class StartGameMessageListener extends AbstractUnoClientMessageListener {
         Boolean isValid = (Boolean) message.getParameter("valid");
 
         UnoRoom room = (UnoRoom) client.getModel().getMenu().getRoom(messageRoom);
+        room.getGame().addObserver(room);
         UnoPlayer player = (UnoPlayer) room.getPlayer(messagePlayer);
 
         if (isValid) {

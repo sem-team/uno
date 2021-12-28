@@ -33,6 +33,12 @@ public class GameView implements IView {
 
     @Override
     public void update(Observable o, IEvent event) {
-
+//        Integer type = (Integer) event.getParameter("type");
+//        String action = (String) event.getParameter("action");
+//        boolean isValid = event.getParameter(Boolean.class);
+//
+//        if (type == UnoProtocol.MESSAGE_GAME && action.equals("start") && isValid) {
+//            controller.
+//        }
     }
 }

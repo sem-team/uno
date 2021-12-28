@@ -44,7 +44,7 @@ public abstract class AbstractMenu extends Observable implements Observer, Seria
 
     public AbstractRoom getRoom(AbstractRoom providedRoom) {
         for (AbstractRoom room : rooms) {
-            if (providedRoom.getParticipants().equals(room.getParticipants())) {
+            if (providedRoom.equals(room)) {
                 return room;
             }
         }

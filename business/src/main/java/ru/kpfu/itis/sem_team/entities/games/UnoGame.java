@@ -12,6 +12,7 @@ import java.util.List;
 public class UnoGame extends AbstractGame {
     public UnoGame(UnoRoom room) {
         this.room = room;
+        this.addObserver(room);
         this.board = new UnoBoard(this);
     }
 
@@ -32,11 +33,15 @@ public class UnoGame extends AbstractGame {
         this.hasStarted = true;
         giveCards();
         setNextActivePlayer();
+
+        notifyObservers(new Event(UnoProtocol.MESSAGE_GAME, "start"));
     }
 
     @Override
     public void end() {
         this.hasEnded = true;
+
+        notifyObservers(new Event(UnoProtocol.MESSAGE_GAME, "start"));
     }
 
     public void finishTurn() {

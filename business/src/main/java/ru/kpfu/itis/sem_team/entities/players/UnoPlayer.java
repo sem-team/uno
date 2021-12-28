@@ -73,6 +73,13 @@ public class UnoPlayer extends AbstractPlayer {
         else {
             useUnoCard(card, board);
         }
+
+        if (this.cards.size() == 0 && this.saidUno) {
+            finishGame(board.getGame());
+        }
+        else if (!this.saidUno) {
+            askCard((UnoGame) board.getGame());
+        }
     }
 
     private void useWildcard(UnoCard card, UnoBoard board) {
@@ -206,6 +213,10 @@ public class UnoPlayer extends AbstractPlayer {
         else {
             throw new UnoException();
         }
+    }
+
+    public void finishGame(AbstractGame game) {
+        game.end();
     }
 
     public List<UnoCard> getCards() {

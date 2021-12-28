@@ -3,14 +3,16 @@ package ru.kpfu.itis.sem_team.entities.menus;
 import ru.kpfu.itis.sem_team.entities.players.AbstractPlayer;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
 import ru.kpfu.itis.sem_team.event.Event;
+import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 import ru.kpfu.itis.sem_team.util.Observable;
+import ru.kpfu.itis.sem_team.util.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class AbstractMenu extends Observable implements Observer{
+public abstract class AbstractMenu extends Observable implements Observer {
     protected List<AbstractRoom> rooms;
 
     public AbstractMenu() {

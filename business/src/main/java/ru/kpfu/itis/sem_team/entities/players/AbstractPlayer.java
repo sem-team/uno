@@ -4,6 +4,8 @@ import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.util.Observable;
 import ru.kpfu.itis.sem_team.util.Observer;
 
+import java.util.Objects;
+
 public abstract class AbstractPlayer extends Observable implements IPlayer, Observer  {
     protected String name;
     protected int id;
@@ -28,6 +30,19 @@ public abstract class AbstractPlayer extends Observable implements IPlayer, Obse
     @Override
     public void update(Observable o, IEvent event) {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractPlayer player = (AbstractPlayer) o;
+        return id == player.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public int getId() {

@@ -53,7 +53,7 @@ public class GameView implements IView {
         discardPack.getChildren().add(drawCard("UnoCard"));
         discardPack.setAlignment(Pos.CENTER);
         Button uno = new Button("UNO!");
-        uno.getStyleClass().add("gameBtn");
+        uno.getStyleClass().add("gameButton");
         discardPack.getChildren().add(uno);
         view.setCenter(discardPack);
     }

@@ -55,7 +55,7 @@ public class GameView implements IView {
         Button uno = new Button("UNO!");
         uno.getStyleClass().add("gameBtn");
         discardPack.getChildren().add(uno);
-
+        view.setCenter(discardPack);
     }
 
     private Node buildНCardPack() {

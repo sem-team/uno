@@ -212,7 +212,6 @@ public class UnoPlayer extends AbstractPlayer {
     public void startGame(AbstractGame game) throws UnoException {
         if (this.equals(game.getRoom().getAdmin()) && game.getRoom().getParticipants().size() > 1) {
             game.start();
-            game.notifyObservers(new Event(UnoProtocol.MESSAGE_GAME, "start"));
         }
         else {
             throw new UnoException();

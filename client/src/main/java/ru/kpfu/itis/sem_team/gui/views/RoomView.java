@@ -25,6 +25,7 @@ public class RoomView implements IView {
     public RoomView(UnoRoom room, RoomController controller) {
         this.room = room;
         this.controller = controller;
+        room.addObserver(this);
 
         buildView();
     }

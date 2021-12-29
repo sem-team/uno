@@ -15,7 +15,7 @@ import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.gui.controllers.GameController;
 import ru.kpfu.itis.sem_team.util.Observable;
 
-import java.awt.*;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

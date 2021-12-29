@@ -1,6 +1,7 @@
 package ru.kpfu.itis.sem_team.entities.players;
 
 import ru.kpfu.itis.sem_team.entities.cards.*;
+import ru.kpfu.itis.sem_team.event.Event;
 import ru.kpfu.itis.sem_team.exceptions.UnoException;
 import ru.kpfu.itis.sem_team.entities.games.AbstractGame;
 import ru.kpfu.itis.sem_team.entities.rooms.AbstractRoom;
@@ -8,6 +9,7 @@ import ru.kpfu.itis.sem_team.entities.rooms.UnoRoom;
 import ru.kpfu.itis.sem_team.entities.boards.UnoBoard;
 import ru.kpfu.itis.sem_team.entities.games.UnoGame;
 import ru.kpfu.itis.sem_team.entities.menus.AbstractMenu;
+import ru.kpfu.itis.sem_team.protocol.UnoProtocol;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -210,6 +212,7 @@ public class UnoPlayer extends AbstractPlayer {
     public void startGame(AbstractGame game) throws UnoException {
         if (this.equals(game.getRoom().getAdmin()) && game.getRoom().getParticipants().size() > 1) {
             game.start();
+            game.notifyObservers(new Event(UnoProtocol.MESSAGE_GAME, "start"));
         }
         else {
             throw new UnoException();

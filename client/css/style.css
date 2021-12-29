@@ -18,6 +18,11 @@
     -fx-text-fill: linear-gradient(white, #d0d0d0);
     -fx-font-size: 30px;
 }
+.activePlayerLabel {
+    -fx-font-family: "Helvetica";
+    -fx-text-fill: linear-gradient(#ff8600, #d0d0d0);
+    -fx-font-size: 30px;
+}
 .gameButton{
     -fx-background-color:
             #090a0c,

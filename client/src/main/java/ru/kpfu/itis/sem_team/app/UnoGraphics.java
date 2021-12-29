@@ -99,6 +99,7 @@ public class UnoGraphics extends Application {
         startBanner.getChildren().add(logoView);
         startBanner.getChildren().add(startButton);
         startBanner.getChildren().add(musicButton);
+        startBanner.setMinSize(800,600);
         Scene scene = new Scene(startBanner, 800, 600);
         scene.getStylesheets().add(new File("./client/css/style.css").toURI().toString());
         startButton.getStyleClass().add("menuBtn");

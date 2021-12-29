@@ -42,5 +42,9 @@ public class RoomController {
         displayService.displayGame();
     }
 
+    public void displayMenu() {
+        displayService.displayMenu();
+    }
+
 
 }

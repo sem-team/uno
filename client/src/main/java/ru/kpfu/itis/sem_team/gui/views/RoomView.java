@@ -25,7 +25,6 @@ public class RoomView implements IView {
     public RoomView(UnoRoom room, RoomController controller) {
         this.room = room;
         this.controller = controller;
-        room.addObserver(this);
 
         buildView();
     }
@@ -78,6 +77,10 @@ public class RoomView implements IView {
         if (type == UnoProtocol.MESSAGE_GAME && action.equals("start")) {
             controller.displayGame();
             return;
+        }
+
+        if(type == UnoProtocol.MESSAGE_ROOM && action.equals("leave")) {
+            controller.displayMenu();
         }
 
         Platform.runLater(this::buildView);

@@ -4,8 +4,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -107,12 +105,8 @@ public class GameView implements IView {
 
     @Override
     public void update(Observable o, IEvent event) {
-//        Integer type = (Integer) event.getParameter("type");
-//        String action = (String) event.getParameter("action");
-//        boolean isValid = event.getParameter(Boolean.class);
-//
-//        if (type == UnoProtocol.MESSAGE_GAME && action.equals("start") && isValid) {
-//            controller.
-//        }
+        Integer type = (Integer) event.getParameter("type");
+        String action = (String) event.getParameter("action");
+
     }
 }

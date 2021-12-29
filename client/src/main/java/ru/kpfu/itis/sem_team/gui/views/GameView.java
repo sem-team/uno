@@ -50,7 +50,7 @@ public class GameView implements IView {
 
         HBox discardPack = new HBox();
         discardPack.setSpacing(5);
-        discardPack.getChildren().add(drawCard("unoCard"));
+        discardPack.getChildren().add(drawCard("UnoCard"));
         discardPack.setAlignment(Pos.CENTER);
         Button uno = new Button("UNO!");
         uno.getStyleClass().add("gameBtn");
@@ -64,7 +64,7 @@ public class GameView implements IView {
         pack.setSpacing(5);
         pack.setPadding(new Insets(10, 10, 10, 10));
         for (int i = 0; i < 8; i++) {
-            pack.getChildren().add(drawCard("unoCard"));
+            pack.getChildren().add(drawCard("UnoCard"));
         }
         return pack;
     }

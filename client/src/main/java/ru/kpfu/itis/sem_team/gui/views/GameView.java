@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -14,6 +15,7 @@ import ru.kpfu.itis.sem_team.event.IEvent;
 import ru.kpfu.itis.sem_team.gui.controllers.GameController;
 import ru.kpfu.itis.sem_team.util.Observable;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -42,11 +44,17 @@ public class GameView implements IView {
             view.setLeft(buildVCardPack());
         }
         if (count == 4) {
+            view.setLeft(buildVCardPack());
             view.setRight(buildVCardPack());
         }
 
         HBox discardPack = new HBox();
-
+        discardPack.setSpacing(5);
+        discardPack.getChildren().add(drawCard("unoCard"));
+        discardPack.setAlignment(Pos.CENTER);
+        Button uno = new Button("UNO!");
+        uno.getStyleClass().add("gameBtn");
+        discardPack.getChildren().add(uno);
 
     }
 
@@ -86,8 +94,8 @@ public class GameView implements IView {
             try (FileInputStream is = new FileInputStream("./client/images/unoCard.png")) {
                 Image logo = new Image(is);
                 ImageView logoView = new ImageView(logo);
-                logoView.setFitHeight(100);
-                logoView.setFitWidth(72);
+                logoView.setFitHeight(50);
+                logoView.setFitWidth(36);
                 pack.getChildren().add(logoView);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

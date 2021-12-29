@@ -40,34 +40,44 @@ public class GameView implements IView {
         view.getStyleClass().add("gameStage");
         int count = game.getNumberOfActivePlayer();
         view.setTop(buildНCardPack());
-        if(count == 3) {
+        if (count == 3) {
             view.setLeft(buildVCardPack());
         }
-        if(count == 4) {
+        if (count == 4) {
             view.setRight(buildVCardPack());
         }
 
+        HBox discardPack = new HBox();
+
+
     }
 
-    private Node buildНCardPack(){
+    private Node buildНCardPack() {
         HBox pack = new HBox();
         pack.setAlignment(Pos.CENTER);
         pack.setSpacing(5);
-        pack.setPadding(new Insets(10,10,10,10));
-        for(int i = 0; i < 8; i++) {
-            try (FileInputStream is = new FileInputStream("./client/images/unoCard.png")) {
-                Image logo = new Image(is);
-                ImageView logoView = new ImageView(logo);
-                logoView.setFitHeight(100);
-                logoView.setFitWidth(72);
-                pack.getChildren().add(logoView);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        pack.setPadding(new Insets(10, 10, 10, 10));
+        for (int i = 0; i < 8; i++) {
+            pack.getChildren().add(drawCard("unoCard"));
         }
         return pack;
+    }
+
+    private ImageView drawCard(String name) {
+        ImageView logoView = null;
+        try (FileInputStream is = new FileInputStream("./client/images/" + name +".png")) {
+            Image logo = new Image(is);
+            logoView = new ImageView(logo);
+            logoView.setFitHeight(100);
+            logoView.setFitWidth(72);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            return logoView;
+        }
     }
     private Node buildVCardPack(){
         VBox pack = new VBox();
